@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * <p>date: 2019-12-22 20:29/p>
  * <p>desc: </p>
  */
-@Api(description = "书籍")
+@Api(value = "书籍")
 @RestController
 @RequestMapping("/api")
 public class BookController {

@@ -1,0 +1,5 @@
+/src/main/resources/mybatis/db.properties
+/src/main/resources/mybatis/generator-config.xml
+/log/
+/target
+/out

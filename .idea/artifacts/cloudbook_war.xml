@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cloudbook:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/cloudbook_war</output-path>
+    <root id="archive" name="cloudbook_war.war">
+      <element id="artifact" artifact-name="cloudbook:war exploded" />
+    </root>
+  </artifact>
+</component>

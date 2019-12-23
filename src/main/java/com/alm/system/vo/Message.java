@@ -81,4 +81,15 @@ public class Message {
     public void setPage(Page page) {
         this.page = page;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "code=" + code +
+                ", ok=" + ok +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                ", page=" + page +
+                '}';
+    }
 }

@@ -1,7 +1,9 @@
 package com.alm.user.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -21,6 +23,7 @@ public class User {
     @ApiModelProperty("电子邮箱")
     private String email;
 
+    @JsonIgnore
     @ApiModelProperty("密码")
     private String pwd;
 
@@ -33,14 +36,32 @@ public class User {
     @ApiModelProperty("性别")
     private Integer sex;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty("创建时间")
     private Date createTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty("最后登录时间")
     private Date latestTime;
 
     @ApiModelProperty("是否允许登录")
     private Integer isSignable;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", headImg='" + headImg + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", sex=" + sex +
+                ", createTime=" + createTime +
+                ", latestTime=" + latestTime +
+                ", isSignable=" + isSignable +
+                '}';
+    }
 
     /**
      * 用户标识

@@ -246,7 +246,7 @@
     </dependencies>
 
     <build>
-        <finalName>alm_api_note</finalName>
+        <finalName>cloud_book</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

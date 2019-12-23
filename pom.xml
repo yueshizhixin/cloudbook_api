@@ -45,8 +45,8 @@
         <lombok.version>1.16.20</lombok.version>
 
         <!--swagger-->
-        <springfox_swagger2.version>2.9.2</springfox_swagger2.version>
-        <springfox_swagger_ui.version>2.9.2</springfox_swagger_ui.version>
+        <springfox_swagger2.version>2.6.1</springfox_swagger2.version>
+        <springfox_swagger_ui.version>2.6.1</springfox_swagger_ui.version>
 
     </properties>
 

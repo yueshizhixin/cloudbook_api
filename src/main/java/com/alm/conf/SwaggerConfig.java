@@ -12,25 +12,25 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableWebMvc
-@Configuration
-@EnableSwagger2
+//@EnableWebMvc
+//@Configuration
+//@EnableSwagger2
 public class SwaggerConfig {
-    @Bean
-    public Docket buildDocket() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .paths(PathSelectors.any()) // and by paths
-                .build();
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("云之书") // 任意，请稍微规范点
-                .description("云之书接口") // 任意，请稍微规范点
-                .version("1.0.0")
-                .build();
-    }
+//    @Bean
+//    public Docket buildDocket() {
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .apiInfo(apiInfo())
+//                .select()
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+//                .paths(PathSelectors.any()) // and by paths
+//                .build();
+//    }
+//
+//    private ApiInfo apiInfo() {
+//        return new ApiInfoBuilder()
+//                .title("云之书") // 任意，请稍微规范点
+//                .description("云之书接口") // 任意，请稍微规范点
+//                .version("1.0.0")
+//                .build();
+//    }
 }

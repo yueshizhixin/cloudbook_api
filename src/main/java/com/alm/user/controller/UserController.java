@@ -1,5 +1,6 @@
 package com.alm.user.controller;
 
+import com.alm.system.authority.Authority;
 import com.alm.system.enume.SessionEnum;
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
@@ -35,7 +36,7 @@ public class UserController {
     }
 
     @ApiOperation("登录")
-    @RequestMapping(value = "/user/tag=signIn", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/tag=signIn", method = RequestMethod.POST)
     public String signIn(@ModelAttribute User userParam, HttpSession session) {
         Message msg = userService.signIn(userParam);
         System.out.println(msg);
@@ -46,6 +47,7 @@ public class UserController {
     }
 
     @ApiOperation("获取我的信息")
+    @Authority
     @RequestMapping(value = "/user/tag=me", method = RequestMethod.GET)
     public String userMessage(HttpSession session) {
         User user= (User) session.getAttribute(SessionEnum.user.getValue());

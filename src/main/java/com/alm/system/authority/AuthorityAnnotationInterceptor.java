@@ -1,6 +1,6 @@
 package com.alm.system.authority;
 
-import com.alm.system.enume.SessionEnum;
+import com.alm.enume.SessionEnum;
 import com.alm.user.po.User;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -35,8 +35,8 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
                     }
                     if (authority != null) {
                         if (AuthorityEnum.UNAUTHORIZED == authority.value()) {
-                            User user = (User) req.getSession().getAttribute(SessionEnum.user.getValue());
-                            if (user == null || user.getId() == null) {
+                            User user = (User) req.getSession().getAttribute(SessionEnum.user.AttrKey());
+                            if (user == null || user.getId() == null || user.getIsSignable()==0) {
                                 req.getRequestDispatcher("/api/401").forward(req, res);
                                 return false;
                             }

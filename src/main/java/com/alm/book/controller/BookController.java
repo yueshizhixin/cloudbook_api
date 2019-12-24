@@ -1,17 +1,16 @@
 package com.alm.book.controller;
 
+import com.alm.book.po.Book;
 import com.alm.book.service.BookService;
+import com.alm.enume.SessionEnum;
 import com.alm.system.authority.Authority;
-import com.alm.system.enume.SessionEnum;
 import com.alm.user.po.User;
 import com.alm.util.RESTUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -32,10 +31,24 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @ApiOperation("列表")
+    @ApiOperation("书城列表")
     @RequestMapping(value = "/book", method = RequestMethod.GET)
-    public String getNoteSimpleList() {
-        return RESTUtil.HTTP200(bookService.getBookList());
+    public String getBookShopList() {
+        return RESTUtil.HTTP200(bookService.getBookShopList());
+    }
+
+    @ApiOperation("我的书架")
+    @Authority
+    @RequestMapping(value = "/shelf", method = RequestMethod.GET)
+    public String getMyBookShelf(HttpSession session) {
+        User user= (User) session.getAttribute(SessionEnum.user.AttrKey());
+        return RESTUtil.HTTP200(bookService.getMyBookShelf(user.getId()));
+    }
+
+    @ApiOperation("书籍详情")
+    @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
+    public String getBookDetail(@ModelAttribute Book book){
+        return RESTUtil.HTTP200(bookService.getBookDetail(book.getId()));
     }
 
 

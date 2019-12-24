@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  <p>table  书籍</p>
  <p>author lishuai</p>
- <p>time   2019-12-22</p>
+ <p>time   2019-12-24</p>
 */
 @ApiModel("书籍")
 public class Book {
@@ -27,6 +27,12 @@ public class Book {
 
     @ApiModelProperty("书籍封面")
     private String bookImage;
+
+    @ApiModelProperty("一句话描述")
+    private String shortDescription;
+
+    @ApiModelProperty("描述")
+    private String description;
 
     @ApiModelProperty("标签")
     private String tag;
@@ -124,6 +130,38 @@ public class Book {
      */
     public void setBookImage(String bookImage) {
         this.bookImage = bookImage == null ? null : bookImage.trim();
+    }
+
+    /**
+     * 一句话描述
+     * @return shortDescription 一句话描述
+     */
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    /**
+     * 一句话描述
+     * @param shortDescription 一句话描述
+     */
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription == null ? null : shortDescription.trim();
+    }
+
+    /**
+     * 描述
+     * @return description 描述
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * 描述
+     * @param description 描述
+     */
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 
     /**

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alm.user.mapper.ViewUserShelfMapper">
+  <resultMap id="BaseResultMap" type="com.alm.user.po.ViewUserShelf">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="bookId" jdbcType="INTEGER" property="bookId" />
+    <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
+    <result column="chapterNo" jdbcType="INTEGER" property="chapterNo" />
+    <result column="pageNo" jdbcType="INTEGER" property="pageNo" />
+    <result column="readDuration" jdbcType="INTEGER" property="readDuration" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="bookName" jdbcType="VARCHAR" property="bookName" />
+    <result column="bookAuthor" jdbcType="VARCHAR" property="bookAuthor" />
+    <result column="bookAuthorImage" jdbcType="VARCHAR" property="bookAuthorImage" />
+    <result column="bookImage" jdbcType="VARCHAR" property="bookImage" />
+    <result column="bookShortDescription" jdbcType="VARCHAR" property="bookShortDescription" />
+    <result column="bookDescription" jdbcType="VARCHAR" property="bookDescription" />
+    <result column="bookTag" jdbcType="VARCHAR" property="bookTag" />
+    <result column="bookChapterCount" jdbcType="INTEGER" property="bookChapterCount" />
+    <result column="bookWordCount" jdbcType="DECIMAL" property="bookWordCount" />
+    <result column="bookTapCount" jdbcType="INTEGER" property="bookTapCount" />
+    <result column="bookCreateTime" jdbcType="TIMESTAMP" property="bookCreateTime" />
+    <result column="bookUpdateTime" jdbcType="TIMESTAMP" property="bookUpdateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, userId, bookId, chapterId, chapterNo, pageNo, readDuration, createTime, updateTime, 
+    bookName, bookAuthor, bookAuthorImage, bookImage, bookShortDescription, bookDescription, 
+    bookTag, bookChapterCount, bookWordCount, bookTapCount, bookCreateTime, bookUpdateTime
+  </sql>
+  <select id="selectByExample" parameterType="com.alm.user.po.ViewUserShelfExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from v_user_shelf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.alm.user.po.ViewUserShelfExample">
+    delete from v_user_shelf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.alm.user.po.ViewUserShelf">
+    insert into v_user_shelf (id, userId, bookId, 
+      chapterId, chapterNo, pageNo, 
+      readDuration, createTime, updateTime, 
+      bookName, bookAuthor, bookAuthorImage, 
+      bookImage, bookShortDescription, bookDescription, 
+      bookTag, bookChapterCount, bookWordCount, 
+      bookTapCount, bookCreateTime, bookUpdateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
+      #{chapterId,jdbcType=INTEGER}, #{chapterNo,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, 
+      #{readDuration,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=VARCHAR}, #{bookAuthorImage,jdbcType=VARCHAR}, 
+      #{bookImage,jdbcType=VARCHAR}, #{bookShortDescription,jdbcType=VARCHAR}, #{bookDescription,jdbcType=VARCHAR}, 
+      #{bookTag,jdbcType=VARCHAR}, #{bookChapterCount,jdbcType=INTEGER}, #{bookWordCount,jdbcType=DECIMAL}, 
+      #{bookTapCount,jdbcType=INTEGER}, #{bookCreateTime,jdbcType=TIMESTAMP}, #{bookUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alm.user.po.ViewUserShelf">
+    insert into v_user_shelf
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="bookId != null">
+        bookId,
+      </if>
+      <if test="chapterId != null">
+        chapterId,
+      </if>
+      <if test="chapterNo != null">
+        chapterNo,
+      </if>
+      <if test="pageNo != null">
+        pageNo,
+      </if>
+      <if test="readDuration != null">
+        readDuration,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="bookName != null">
+        bookName,
+      </if>
+      <if test="bookAuthor != null">
+        bookAuthor,
+      </if>
+      <if test="bookAuthorImage != null">
+        bookAuthorImage,
+      </if>
+      <if test="bookImage != null">
+        bookImage,
+      </if>
+      <if test="bookShortDescription != null">
+        bookShortDescription,
+      </if>
+      <if test="bookDescription != null">
+        bookDescription,
+      </if>
+      <if test="bookTag != null">
+        bookTag,
+      </if>
+      <if test="bookChapterCount != null">
+        bookChapterCount,
+      </if>
+      <if test="bookWordCount != null">
+        bookWordCount,
+      </if>
+      <if test="bookTapCount != null">
+        bookTapCount,
+      </if>
+      <if test="bookCreateTime != null">
+        bookCreateTime,
+      </if>
+      <if test="bookUpdateTime != null">
+        bookUpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterNo != null">
+        #{chapterNo,jdbcType=INTEGER},
+      </if>
+      <if test="pageNo != null">
+        #{pageNo,jdbcType=INTEGER},
+      </if>
+      <if test="readDuration != null">
+        #{readDuration,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookName != null">
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null">
+        #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthorImage != null">
+        #{bookAuthorImage,jdbcType=VARCHAR},
+      </if>
+      <if test="bookImage != null">
+        #{bookImage,jdbcType=VARCHAR},
+      </if>
+      <if test="bookShortDescription != null">
+        #{bookShortDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="bookDescription != null">
+        #{bookDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="bookTag != null">
+        #{bookTag,jdbcType=VARCHAR},
+      </if>
+      <if test="bookChapterCount != null">
+        #{bookChapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="bookWordCount != null">
+        #{bookWordCount,jdbcType=DECIMAL},
+      </if>
+      <if test="bookTapCount != null">
+        #{bookTapCount,jdbcType=INTEGER},
+      </if>
+      <if test="bookCreateTime != null">
+        #{bookCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookUpdateTime != null">
+        #{bookUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.alm.user.po.ViewUserShelfExample" resultType="java.lang.Long">
+    select count(*) from v_user_shelf
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update v_user_shelf
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        userId = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookId != null">
+        bookId = #{record.bookId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chapterId != null">
+        chapterId = #{record.chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chapterNo != null">
+        chapterNo = #{record.chapterNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.pageNo != null">
+        pageNo = #{record.pageNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.readDuration != null">
+        readDuration = #{record.readDuration,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bookName != null">
+        bookName = #{record.bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookAuthor != null">
+        bookAuthor = #{record.bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookAuthorImage != null">
+        bookAuthorImage = #{record.bookAuthorImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookImage != null">
+        bookImage = #{record.bookImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookShortDescription != null">
+        bookShortDescription = #{record.bookShortDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookDescription != null">
+        bookDescription = #{record.bookDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookTag != null">
+        bookTag = #{record.bookTag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookChapterCount != null">
+        bookChapterCount = #{record.bookChapterCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookWordCount != null">
+        bookWordCount = #{record.bookWordCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.bookTapCount != null">
+        bookTapCount = #{record.bookTapCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookCreateTime != null">
+        bookCreateTime = #{record.bookCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bookUpdateTime != null">
+        bookUpdateTime = #{record.bookUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update v_user_shelf
+    set id = #{record.id,jdbcType=INTEGER},
+      userId = #{record.userId,jdbcType=INTEGER},
+      bookId = #{record.bookId,jdbcType=INTEGER},
+      chapterId = #{record.chapterId,jdbcType=INTEGER},
+      chapterNo = #{record.chapterNo,jdbcType=INTEGER},
+      pageNo = #{record.pageNo,jdbcType=INTEGER},
+      readDuration = #{record.readDuration,jdbcType=INTEGER},
+      createTime = #{record.createTime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
+      bookName = #{record.bookName,jdbcType=VARCHAR},
+      bookAuthor = #{record.bookAuthor,jdbcType=VARCHAR},
+      bookAuthorImage = #{record.bookAuthorImage,jdbcType=VARCHAR},
+      bookImage = #{record.bookImage,jdbcType=VARCHAR},
+      bookShortDescription = #{record.bookShortDescription,jdbcType=VARCHAR},
+      bookDescription = #{record.bookDescription,jdbcType=VARCHAR},
+      bookTag = #{record.bookTag,jdbcType=VARCHAR},
+      bookChapterCount = #{record.bookChapterCount,jdbcType=INTEGER},
+      bookWordCount = #{record.bookWordCount,jdbcType=DECIMAL},
+      bookTapCount = #{record.bookTapCount,jdbcType=INTEGER},
+      bookCreateTime = #{record.bookCreateTime,jdbcType=TIMESTAMP},
+      bookUpdateTime = #{record.bookUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

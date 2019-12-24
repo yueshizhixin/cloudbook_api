@@ -1,4 +1,4 @@
-package com.alm.system.enume;
+package com.alm.enume;
 
 /**
  * Created by IntelliJ IDEA.
@@ -7,7 +7,7 @@ package com.alm.system.enume;
  * <p>desc: 用户枚举</p>
  */
 public class UserEnum {
-    public enum signUp {
+    public enum sign {
         account(1, "account"),
         phone(2, "phone"),
         email(3, "email"),
@@ -16,7 +16,7 @@ public class UserEnum {
         private int id;
         private String value;
 
-        signUp(int id, String value) {
+        sign(int id, String value) {
             this.id = id;
             this.value = value;
         }
@@ -30,4 +30,7 @@ public class UserEnum {
         }
 
     }
+
+
+
 }

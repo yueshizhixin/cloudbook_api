@@ -75,7 +75,7 @@ public class BookExample {
     }
 
     /**
-     * 书籍 2019-12-22
+     * 书籍 2019-12-24
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -455,6 +455,146 @@ public class BookExample {
 
         public Criteria andBookImageNotBetween(String value1, String value2) {
             addCriterion("bookImage not between", value1, value2, "bookImage");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionIsNull() {
+            addCriterion("shortDescription is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionIsNotNull() {
+            addCriterion("shortDescription is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionEqualTo(String value) {
+            addCriterion("shortDescription =", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionNotEqualTo(String value) {
+            addCriterion("shortDescription <>", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionGreaterThan(String value) {
+            addCriterion("shortDescription >", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("shortDescription >=", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionLessThan(String value) {
+            addCriterion("shortDescription <", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("shortDescription <=", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionLike(String value) {
+            addCriterion("shortDescription like", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionNotLike(String value) {
+            addCriterion("shortDescription not like", value, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionIn(List<String> values) {
+            addCriterion("shortDescription in", values, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionNotIn(List<String> values) {
+            addCriterion("shortDescription not in", values, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionBetween(String value1, String value2) {
+            addCriterion("shortDescription between", value1, value2, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortDescriptionNotBetween(String value1, String value2) {
+            addCriterion("shortDescription not between", value1, value2, "shortDescription");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionIsNull() {
+            addCriterion("description is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionIsNotNull() {
+            addCriterion("description is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionEqualTo(String value) {
+            addCriterion("description =", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotEqualTo(String value) {
+            addCriterion("description <>", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionGreaterThan(String value) {
+            addCriterion("description >", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionGreaterThanOrEqualTo(String value) {
+            addCriterion("description >=", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionLessThan(String value) {
+            addCriterion("description <", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionLessThanOrEqualTo(String value) {
+            addCriterion("description <=", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionLike(String value) {
+            addCriterion("description like", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotLike(String value) {
+            addCriterion("description not like", value, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionIn(List<String> values) {
+            addCriterion("description in", values, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotIn(List<String> values) {
+            addCriterion("description not in", values, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionBetween(String value1, String value2) {
+            addCriterion("description between", value1, value2, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andDescriptionNotBetween(String value1, String value2) {
+            addCriterion("description not between", value1, value2, "description");
             return (Criteria) this;
         }
 
@@ -840,7 +980,7 @@ public class BookExample {
     }
 
     /**
-     * 书籍 2019-12-22
+     * 书籍 2019-12-24
      */
     public static class Criterion {
         private String condition;

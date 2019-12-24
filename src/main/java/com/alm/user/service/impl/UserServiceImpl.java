@@ -41,8 +41,15 @@ public class UserServiceImpl implements UserService {
             msg.setMsg("账号或密码错误");
             return msg;
         }
+
+        User me = list.get(0);
+        if (me.getIsSignable() != 1) {
+            msg.setMsg("无权限登录");
+            return msg;
+        }
+
         msg.setOk(1);
-        msg.setData(list.get(0));
+        msg.setData(me);
         msg.setMsg("操作成功");
         return msg;
     }

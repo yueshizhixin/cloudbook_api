@@ -34,22 +34,22 @@ public class UserController {
 
     @ApiOperation("登录")
     @RequestMapping(value = "/user/tag=sign", method = RequestMethod.POST)
-    public String signIn(@RequestParam String phone, @RequestParam String pwd, @RequestParam String act, HttpSession session) {
+    public String signIn(@RequestParam String phone, @RequestParam String pwd, @RequestParam String action, HttpSession session) {
 
         User user = new User();
         user.setPhone(phone);
         user.setPwd(pwd);
         Message msg = null;
-        if ("in".equals(act)) {
+        if ("in".equals(action)) {
             msg = userService.signIn(user);
             if (msg.getOk() == 1) {
                 session.setAttribute(SessionEnum.user.AttrKey(), msg.getData());
             }
-        } else if ("out".equals(act)) {
+        } else if ("out".equals(action)) {
             session.setAttribute(SessionEnum.user.AttrKey(), null);
             msg = new Message(1);
 
-        } else if ("up".equals(act)) {
+        } else if ("up".equals(action)) {
 
         }
         return JSONUtil.format(msg);

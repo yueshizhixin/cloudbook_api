@@ -19,7 +19,7 @@ public interface BookService {
      * 获取商城所有书籍
      * @return
      */
-    public List<Book> getBookShopList();
+    public List<Book> getShopBookList();
 
     /**
      * 获取我的书架

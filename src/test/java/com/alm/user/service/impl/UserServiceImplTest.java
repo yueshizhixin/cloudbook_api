@@ -23,7 +23,7 @@ public class UserServiceImplTest {
     public void signIn() {
         User user =new User();
         user.setPhone("13127043375");
-        user.setPwd("1");
+        user.setPwd("13127043375");
 
         System.out.println(JSONUtil.format(userService.signIn(user)));
     }

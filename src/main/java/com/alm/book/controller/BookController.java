@@ -33,8 +33,8 @@ public class BookController {
 
     @ApiOperation("书城列表")
     @RequestMapping(value = "/book", method = RequestMethod.GET)
-    public String getBookShopList() {
-        return RESTUtil.HTTP200(bookService.getBookShopList());
+    public String getShopBookList() {
+        return RESTUtil.HTTP200(bookService.getShopBookList());
     }
 
     @ApiOperation("我的书架")

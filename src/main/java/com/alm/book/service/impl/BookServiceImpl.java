@@ -39,7 +39,7 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public List<Book> getBookShopList() {
+    public List<Book> getShopBookList() {
         return bookMapper.selectByExample(new BookExample());
     }
 

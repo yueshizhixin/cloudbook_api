@@ -70,11 +70,13 @@
         <tx:attributes>
             <tx:method name="delete*" propagation="REQUIRED" read-only="false"
                        rollback-for="java.lang.Exception"/>
-            <tx:method name="insert*" propagation="REQUIRED" read-only="false"
+            <tx:method name="add*" propagation="REQUIRED" read-only="false"
                        rollback-for="java.lang.Exception"/>
             <tx:method name="update*" propagation="REQUIRED" read-only="false"
                        rollback-for="java.lang.Exception"/>
             <tx:method name="merge*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="sign*" propagation="REQUIRED" read-only="false"
                        rollback-for="java.lang.Exception"/>
             <tx:method name="*" propagation="REQUIRED" read-only="true"/>
         </tx:attributes>

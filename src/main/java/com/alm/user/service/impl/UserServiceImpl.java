@@ -5,6 +5,7 @@ import com.alm.user.mapper.UserMapper;
 import com.alm.user.po.User;
 import com.alm.user.po.UserExample;
 import com.alm.user.service.UserService;
+import com.alm.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +48,9 @@ public class UserServiceImpl implements UserService {
             msg.setMsg("无权限登录");
             return msg;
         }
+
+        me.setLatestTime(DateUtil.now());
+        userMapper.updateByPrimaryKeySelective(me);
 
         msg.setOk(1);
         msg.setData(me);

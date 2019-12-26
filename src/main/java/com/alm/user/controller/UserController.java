@@ -7,6 +7,7 @@ import com.alm.user.po.User;
 import com.alm.user.service.UserService;
 import com.alm.util.JSONUtil;
 import com.alm.util.RESTUtil;
+import com.sun.deploy.net.HttpUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserController {
 
     @ApiOperation("登录")
     @RequestMapping(value = "/user/tag=sign", method = RequestMethod.POST)
-    public String signIn(@RequestParam String phone, @RequestParam String pwd, @RequestParam String action, HttpSession session) {
+    public String signIn(@RequestParam(required = false) String phone, @RequestParam(required = false) String pwd, @RequestParam String action, HttpSession session) {
 
         User user = new User();
         user.setPhone(phone);
@@ -46,6 +47,10 @@ public class UserController {
                 session.setAttribute(SessionEnum.user.AttrKey(), msg.getData());
             }
         } else if ("out".equals(action)) {
+            User temp= (User) session.getAttribute(SessionEnum.user.AttrKey());
+            if(temp==null){
+                return RESTUtil.HTTP401();
+            }
             session.setAttribute(SessionEnum.user.AttrKey(), null);
             msg = new Message(1);
 
@@ -58,7 +63,7 @@ public class UserController {
     @ApiOperation("获取我的信息")
     @Authority
     @RequestMapping(value = "/user/tag=me", method = RequestMethod.GET)
-    public String userMessage(HttpSession session) {
+    public String myMessage(HttpSession session) {
         User user = (User) session.getAttribute(SessionEnum.user.AttrKey());
         return RESTUtil.HTTP200(user);
     }

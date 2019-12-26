@@ -10,6 +10,8 @@ import com.alm.user.po.User;
 import com.alm.user.po.UserShelfExample;
 import com.alm.user.po.ViewUserShelf;
 import com.alm.user.po.ViewUserShelfExample;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +41,13 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public List<Book> getShopBookList() {
-        return bookMapper.selectByExample(new BookExample());
+    public List<Book> getShopBookList(int offset,int limit) {
+
+        BookExample example=new BookExample();
+        example.setOrderByClause("id asc");
+        PageHelper.startPage(offset,limit);
+        List<Book> list=bookMapper.selectByExample(example);
+        return list;
     }
 
     /**
@@ -49,10 +56,11 @@ public class BookServiceImpl implements BookService {
      * @return
      */
     @Override
-    public List<ViewUserShelf> getMyBookShelf(int userId) {
+    public List<ViewUserShelf> getMyBookShelf(int offset,int limit,int userId) {
         ViewUserShelfExample example=new ViewUserShelfExample();
         example.createCriteria().andUserIdEqualTo(userId);
         example.setOrderByClause("updateTime desc");
+        PageHelper.startPage(offset,limit);
         return viewUserShelfMapper.selectByExample(example);
     }
 

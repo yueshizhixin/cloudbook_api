@@ -6,6 +6,7 @@ import com.alm.enume.SessionEnum;
 import com.alm.system.authority.Authority;
 import com.alm.user.po.User;
 import com.alm.util.RESTUtil;
+import com.github.pagehelper.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,16 @@ public class BookController {
 
     @ApiOperation("书城列表")
     @RequestMapping(value = "/book", method = RequestMethod.GET)
-    public String getShopBookList() {
-        return RESTUtil.HTTP200(bookService.getShopBookList());
+    public String getShopBookList(@RequestParam int offset,@RequestParam int limit) {
+        return RESTUtil.HTTP200(bookService.getShopBookList(offset,limit));
     }
 
     @ApiOperation("我的书架")
     @Authority
     @RequestMapping(value = "/shelf", method = RequestMethod.GET)
-    public String getMyBookShelf(HttpSession session) {
+    public String getMyBookShelf(@RequestParam int offset,@RequestParam int limit, HttpSession session) {
         User user= (User) session.getAttribute(SessionEnum.user.AttrKey());
-        return RESTUtil.HTTP200(bookService.getMyBookShelf(user.getId()));
+        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,user.getId()));
     }
 
     @ApiOperation("书籍详情")

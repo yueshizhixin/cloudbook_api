@@ -48,7 +48,7 @@
                     <property name="properties">
                         <value>
                             helperDialect=mysql
-                            <!--真实分页-->
+                            <!--合理化分页-->
                             <!--reasonable=true-->
                         </value>
                     </property>

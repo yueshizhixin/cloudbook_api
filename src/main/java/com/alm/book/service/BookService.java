@@ -4,6 +4,7 @@ import com.alm.book.po.Book;
 import com.alm.user.po.User;
 import com.alm.user.po.UserShelf;
 import com.alm.user.po.ViewUserShelf;
+import com.github.pagehelper.Page;
 
 import java.util.List;
 
@@ -19,13 +20,13 @@ public interface BookService {
      * 获取商城所有书籍
      * @return
      */
-    public List<Book> getShopBookList();
+    public List<Book> getShopBookList(int offset,int limit);
 
     /**
      * 获取我的书架
      * @return
      */
-    public List<ViewUserShelf> getMyBookShelf(int userId);
+    public List<ViewUserShelf> getMyBookShelf(int offset,int limit,int userId);
 
     /**
      * 获取书籍详情

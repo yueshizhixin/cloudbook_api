@@ -34,29 +34,24 @@ public class UserController {
     }
 
     @ApiOperation("登录")
-    @RequestMapping(value = "/user/tag=sign", method = RequestMethod.POST)
-    public String signIn(@RequestParam(required = false) String phone, @RequestParam(required = false) String pwd, @RequestParam String action, HttpSession session) {
-
+    @RequestMapping(value = "/user/tag=sign=in", method = RequestMethod.POST)
+    public String signIn(@RequestParam String phone, @RequestParam String pwd, HttpSession session) {
         User user = new User();
         user.setPhone(phone);
         user.setPwd(pwd);
-        Message msg = null;
-        if ("in".equals(action)) {
-            msg = userService.signIn(user);
-            if (msg.getOk() == 1) {
-                session.setAttribute(SessionEnum.user.AttrKey(), msg.getData());
-            }
-        } else if ("out".equals(action)) {
-            User temp= (User) session.getAttribute(SessionEnum.user.AttrKey());
-            if(temp==null){
-                return RESTUtil.HTTP401();
-            }
-            session.setAttribute(SessionEnum.user.AttrKey(), null);
-            msg = new Message(1);
-
-        } else if ("up".equals(action)) {
-
+        Message msg = userService.signIn(user);
+        if (msg.getOk() == 1) {
+            session.setAttribute(SessionEnum.user.AttrKey(), msg.getData());
         }
+        return JSONUtil.format(msg);
+    }
+
+    @ApiOperation("登出")
+    @Authority
+    @RequestMapping(value = "/user/tag=sign=out", method = RequestMethod.POST)
+    public String signOut(HttpSession session) {
+        session.setAttribute(SessionEnum.user.AttrKey(), null);
+        Message msg = new Message(1);
         return JSONUtil.format(msg);
     }
 

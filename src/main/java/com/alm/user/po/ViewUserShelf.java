@@ -9,9 +9,9 @@ import java.util.Date;
 /**
  <p>table  VIEW</p>
  <p>author lishuai</p>
- <p>time   2019-12-24</p>
+ <p>time   2019-12-28</p>
 */
-@ApiModel("我的书架视图")
+@ApiModel("VIEW")
 public class ViewUserShelf {
     @ApiModelProperty("主键标识")
     private Integer id;
@@ -22,16 +22,13 @@ public class ViewUserShelf {
     @ApiModelProperty("书籍id")
     private Integer bookId;
 
-    @ApiModelProperty("阅读记录章节id")
+    @ApiModelProperty("阅读记录章节表id")
     private Integer chapterId;
-
-    @ApiModelProperty("阅读记录序数")
-    private Integer chapterNo;
 
     @ApiModelProperty("阅读记录页数")
     private Integer pageNo;
 
-    @ApiModelProperty("阅读时长")
+    @ApiModelProperty("阅读时长/分")
     private Integer readDuration;
 
     @ApiModelProperty("创建时间")
@@ -49,8 +46,11 @@ public class ViewUserShelf {
     @ApiModelProperty("作者头像")
     private String bookAuthorImage;
 
-    @ApiModelProperty("书籍封面")
-    private String bookImage;
+    @ApiModelProperty("书籍封面-垂直图")
+    private String bookImageVertical;
+
+    @ApiModelProperty("水平图")
+    private String bookImageAlign;
 
     @ApiModelProperty("一句话描述")
     private String bookShortDescription;
@@ -125,35 +125,19 @@ public class ViewUserShelf {
     }
 
     /**
-     * 阅读记录章节id
-     * @return chapterId 阅读记录章节id
+     * 阅读记录章节表id
+     * @return chapterId 阅读记录章节表id
      */
     public Integer getChapterId() {
         return chapterId;
     }
 
     /**
-     * 阅读记录章节id
-     * @param chapterId 阅读记录章节id
+     * 阅读记录章节表id
+     * @param chapterId 阅读记录章节表id
      */
     public void setChapterId(Integer chapterId) {
         this.chapterId = chapterId;
-    }
-
-    /**
-     * 阅读记录序数
-     * @return chapterNo 阅读记录序数
-     */
-    public Integer getChapterNo() {
-        return chapterNo;
-    }
-
-    /**
-     * 阅读记录序数
-     * @param chapterNo 阅读记录序数
-     */
-    public void setChapterNo(Integer chapterNo) {
-        this.chapterNo = chapterNo;
     }
 
     /**
@@ -173,16 +157,16 @@ public class ViewUserShelf {
     }
 
     /**
-     * 阅读时长
-     * @return readDuration 阅读时长
+     * 阅读时长/分
+     * @return readDuration 阅读时长/分
      */
     public Integer getReadDuration() {
         return readDuration;
     }
 
     /**
-     * 阅读时长
-     * @param readDuration 阅读时长
+     * 阅读时长/分
+     * @param readDuration 阅读时长/分
      */
     public void setReadDuration(Integer readDuration) {
         this.readDuration = readDuration;
@@ -269,19 +253,35 @@ public class ViewUserShelf {
     }
 
     /**
-     * 书籍封面
-     * @return bookImage 书籍封面
+     * 书籍封面-垂直图
+     * @return bookImageVertical 书籍封面-垂直图
      */
-    public String getBookImage() {
-        return bookImage;
+    public String getBookImageVertical() {
+        return bookImageVertical;
     }
 
     /**
-     * 书籍封面
-     * @param bookImage 书籍封面
+     * 书籍封面-垂直图
+     * @param bookImageVertical 书籍封面-垂直图
      */
-    public void setBookImage(String bookImage) {
-        this.bookImage = bookImage == null ? null : bookImage.trim();
+    public void setBookImageVertical(String bookImageVertical) {
+        this.bookImageVertical = bookImageVertical == null ? null : bookImageVertical.trim();
+    }
+
+    /**
+     * 水平图
+     * @return bookImageAlign 水平图
+     */
+    public String getBookImageAlign() {
+        return bookImageAlign;
+    }
+
+    /**
+     * 水平图
+     * @param bookImageAlign 水平图
+     */
+    public void setBookImageAlign(String bookImageAlign) {
+        this.bookImageAlign = bookImageAlign == null ? null : bookImageAlign.trim();
     }
 
     /**

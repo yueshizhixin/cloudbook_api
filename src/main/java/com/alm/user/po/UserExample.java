@@ -74,7 +74,7 @@ public class UserExample {
     }
 
     /**
-     * 用户 2019-12-22
+     * 用户 2019-12-28
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -647,63 +647,63 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeIsNull() {
-            addCriterion("latestTime is null");
+        public Criteria andUpdateTimeIsNull() {
+            addCriterion("updateTime is null");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeIsNotNull() {
-            addCriterion("latestTime is not null");
+        public Criteria andUpdateTimeIsNotNull() {
+            addCriterion("updateTime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeEqualTo(Date value) {
-            addCriterion("latestTime =", value, "latestTime");
+        public Criteria andUpdateTimeEqualTo(Date value) {
+            addCriterion("updateTime =", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeNotEqualTo(Date value) {
-            addCriterion("latestTime <>", value, "latestTime");
+        public Criteria andUpdateTimeNotEqualTo(Date value) {
+            addCriterion("updateTime <>", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeGreaterThan(Date value) {
-            addCriterion("latestTime >", value, "latestTime");
+        public Criteria andUpdateTimeGreaterThan(Date value) {
+            addCriterion("updateTime >", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("latestTime >=", value, "latestTime");
+        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("updateTime >=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeLessThan(Date value) {
-            addCriterion("latestTime <", value, "latestTime");
+        public Criteria andUpdateTimeLessThan(Date value) {
+            addCriterion("updateTime <", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeLessThanOrEqualTo(Date value) {
-            addCriterion("latestTime <=", value, "latestTime");
+        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("updateTime <=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeIn(List<Date> values) {
-            addCriterion("latestTime in", values, "latestTime");
+        public Criteria andUpdateTimeIn(List<Date> values) {
+            addCriterion("updateTime in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeNotIn(List<Date> values) {
-            addCriterion("latestTime not in", values, "latestTime");
+        public Criteria andUpdateTimeNotIn(List<Date> values) {
+            addCriterion("updateTime not in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeBetween(Date value1, Date value2) {
-            addCriterion("latestTime between", value1, value2, "latestTime");
+        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+            addCriterion("updateTime between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andLatestTimeNotBetween(Date value1, Date value2) {
-            addCriterion("latestTime not between", value1, value2, "latestTime");
+        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("updateTime not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
@@ -779,7 +779,7 @@ public class UserExample {
     }
 
     /**
-     * 用户 2019-12-22
+     * 用户 2019-12-28
      */
     public static class Criterion {
         private String condition;

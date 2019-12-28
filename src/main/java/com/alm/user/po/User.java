@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  <p>table  用户</p>
  <p>author lishuai</p>
- <p>time   2019-12-22</p>
+ <p>time   2019-12-28</p>
 */
 @ApiModel("用户")
 public class User {
@@ -41,27 +41,11 @@ public class User {
     private Date createTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("最后登录时间")
-    private Date latestTime;
+    @ApiModelProperty("更新时间")
+    private Date updateTime;
 
     @ApiModelProperty("是否允许登录")
     private Integer isSignable;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", headImg='" + headImg + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", sex=" + sex +
-                ", createTime=" + createTime +
-                ", latestTime=" + latestTime +
-                ", isSignable=" + isSignable +
-                '}';
-    }
 
     /**
      * 用户标识
@@ -192,19 +176,19 @@ public class User {
     }
 
     /**
-     * 最后登录时间
-     * @return latestTime 最后登录时间
+     * 更新时间
+     * @return updateTime 更新时间
      */
-    public Date getLatestTime() {
-        return latestTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
     /**
-     * 最后登录时间
-     * @param latestTime 最后登录时间
+     * 更新时间
+     * @param updateTime 更新时间
      */
-    public void setLatestTime(Date latestTime) {
-        this.latestTime = latestTime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     /**

@@ -10,7 +10,7 @@
     <result column="nickName" jdbcType="VARCHAR" property="nickName" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="latestTime" jdbcType="TIMESTAMP" property="latestTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="isSignable" jdbcType="INTEGER" property="isSignable" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, phone, email, pwd, headImg, nickName, sex, createTime, latestTime, isSignable
+    id, phone, email, pwd, headImg, nickName, sex, createTime, updateTime, isSignable
   </sql>
   <select id="selectByExample" parameterType="com.alm.user.po.UserExample" resultMap="BaseResultMap">
     select
@@ -107,11 +107,11 @@
   <insert id="insert" parameterType="com.alm.user.po.User">
     insert into t_user (id, phone, email, 
       pwd, headImg, nickName, 
-      sex, createTime, latestTime, 
+      sex, createTime, updateTime, 
       isSignable)
     values (#{id,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{latestTime,jdbcType=TIMESTAMP}, 
+      #{sex,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{isSignable,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.alm.user.po.User">
@@ -141,8 +141,8 @@
       <if test="createTime != null">
         createTime,
       </if>
-      <if test="latestTime != null">
-        latestTime,
+      <if test="updateTime != null">
+        updateTime,
       </if>
       <if test="isSignable != null">
         isSignable,
@@ -173,8 +173,8 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="latestTime != null">
-        #{latestTime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isSignable != null">
         #{isSignable,jdbcType=INTEGER},
@@ -214,8 +214,8 @@
       <if test="record.createTime != null">
         createTime = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.latestTime != null">
-        latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
+      <if test="record.updateTime != null">
+        updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isSignable != null">
         isSignable = #{record.isSignable,jdbcType=INTEGER},
@@ -235,7 +235,7 @@
       nickName = #{record.nickName,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
-      latestTime = #{record.latestTime,jdbcType=TIMESTAMP},
+      updateTime = #{record.updateTime,jdbcType=TIMESTAMP},
       isSignable = #{record.isSignable,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -265,8 +265,8 @@
       <if test="createTime != null">
         createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="latestTime != null">
-        latestTime = #{latestTime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isSignable != null">
         isSignable = #{isSignable,jdbcType=INTEGER},
@@ -283,7 +283,7 @@
       nickName = #{nickName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},
-      latestTime = #{latestTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
       isSignable = #{isSignable,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

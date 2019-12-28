@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  <p>table  我的书架</p>
  <p>author lishuai</p>
- <p>time   2019-12-22</p>
+ <p>time   2019-12-28</p>
 */
 @ApiModel("我的书架")
 public class UserShelf {
@@ -21,16 +21,13 @@ public class UserShelf {
     @ApiModelProperty("书籍id")
     private Integer bookId;
 
-    @ApiModelProperty("阅读记录章节id")
+    @ApiModelProperty("阅读记录章节表id")
     private Integer chapterId;
-
-    @ApiModelProperty("阅读记录序数")
-    private Integer chapterNo;
 
     @ApiModelProperty("阅读记录页数")
     private Integer pageNo;
 
-    @ApiModelProperty("阅读时长")
+    @ApiModelProperty("阅读时长/分")
     private Integer readDuration;
 
     @ApiModelProperty("创建时间")
@@ -88,35 +85,19 @@ public class UserShelf {
     }
 
     /**
-     * 阅读记录章节id
-     * @return chapterId 阅读记录章节id
+     * 阅读记录章节表id
+     * @return chapterId 阅读记录章节表id
      */
     public Integer getChapterId() {
         return chapterId;
     }
 
     /**
-     * 阅读记录章节id
-     * @param chapterId 阅读记录章节id
+     * 阅读记录章节表id
+     * @param chapterId 阅读记录章节表id
      */
     public void setChapterId(Integer chapterId) {
         this.chapterId = chapterId;
-    }
-
-    /**
-     * 阅读记录序数
-     * @return chapterNo 阅读记录序数
-     */
-    public Integer getChapterNo() {
-        return chapterNo;
-    }
-
-    /**
-     * 阅读记录序数
-     * @param chapterNo 阅读记录序数
-     */
-    public void setChapterNo(Integer chapterNo) {
-        this.chapterNo = chapterNo;
     }
 
     /**
@@ -136,16 +117,16 @@ public class UserShelf {
     }
 
     /**
-     * 阅读时长
-     * @return readDuration 阅读时长
+     * 阅读时长/分
+     * @return readDuration 阅读时长/分
      */
     public Integer getReadDuration() {
         return readDuration;
     }
 
     /**
-     * 阅读时长
-     * @param readDuration 阅读时长
+     * 阅读时长/分
+     * @param readDuration 阅读时长/分
      */
     public void setReadDuration(Integer readDuration) {
         this.readDuration = readDuration;

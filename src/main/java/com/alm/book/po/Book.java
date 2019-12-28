@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  <p>table  书籍</p>
  <p>author lishuai</p>
- <p>time   2019-12-24</p>
+ <p>time   2019-12-28</p>
 */
 @ApiModel("书籍")
 public class Book {
@@ -25,8 +25,11 @@ public class Book {
     @ApiModelProperty("作者头像")
     private String authorImage;
 
-    @ApiModelProperty("书籍封面")
-    private String bookImage;
+    @ApiModelProperty("水平图")
+    private String bookImageAlign;
+
+    @ApiModelProperty("书籍封面-垂直图")
+    private String bookImageVertical;
 
     @ApiModelProperty("一句话描述")
     private String shortDescription;
@@ -117,19 +120,35 @@ public class Book {
     }
 
     /**
-     * 书籍封面
-     * @return bookImage 书籍封面
+     * 水平图
+     * @return bookImageAlign 水平图
      */
-    public String getBookImage() {
-        return bookImage;
+    public String getBookImageAlign() {
+        return bookImageAlign;
     }
 
     /**
-     * 书籍封面
-     * @param bookImage 书籍封面
+     * 水平图
+     * @param bookImageAlign 水平图
      */
-    public void setBookImage(String bookImage) {
-        this.bookImage = bookImage == null ? null : bookImage.trim();
+    public void setBookImageAlign(String bookImageAlign) {
+        this.bookImageAlign = bookImageAlign == null ? null : bookImageAlign.trim();
+    }
+
+    /**
+     * 书籍封面-垂直图
+     * @return bookImageVertical 书籍封面-垂直图
+     */
+    public String getBookImageVertical() {
+        return bookImageVertical;
+    }
+
+    /**
+     * 书籍封面-垂直图
+     * @param bookImageVertical 书籍封面-垂直图
+     */
+    public void setBookImageVertical(String bookImageVertical) {
+        this.bookImageVertical = bookImageVertical == null ? null : bookImageVertical.trim();
     }
 
     /**

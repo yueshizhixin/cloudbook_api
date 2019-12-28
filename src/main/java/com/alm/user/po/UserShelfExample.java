@@ -74,7 +74,7 @@ public class UserShelfExample {
     }
 
     /**
-     * 我的书架 2019-12-22
+     * 我的书架 2019-12-28
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -357,66 +357,6 @@ public class UserShelfExample {
             return (Criteria) this;
         }
 
-        public Criteria andChapterNoIsNull() {
-            addCriterion("chapterNo is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoIsNotNull() {
-            addCriterion("chapterNo is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoEqualTo(Integer value) {
-            addCriterion("chapterNo =", value, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoNotEqualTo(Integer value) {
-            addCriterion("chapterNo <>", value, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoGreaterThan(Integer value) {
-            addCriterion("chapterNo >", value, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoGreaterThanOrEqualTo(Integer value) {
-            addCriterion("chapterNo >=", value, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoLessThan(Integer value) {
-            addCriterion("chapterNo <", value, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoLessThanOrEqualTo(Integer value) {
-            addCriterion("chapterNo <=", value, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoIn(List<Integer> values) {
-            addCriterion("chapterNo in", values, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoNotIn(List<Integer> values) {
-            addCriterion("chapterNo not in", values, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoBetween(Integer value1, Integer value2) {
-            addCriterion("chapterNo between", value1, value2, "chapterNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andChapterNoNotBetween(Integer value1, Integer value2) {
-            addCriterion("chapterNo not between", value1, value2, "chapterNo");
-            return (Criteria) this;
-        }
-
         public Criteria andPageNoIsNull() {
             addCriterion("pageNo is null");
             return (Criteria) this;
@@ -669,7 +609,7 @@ public class UserShelfExample {
     }
 
     /**
-     * 我的书架 2019-12-22
+     * 我的书架 2019-12-28
      */
     public static class Criterion {
         private String condition;

@@ -1,5 +1,6 @@
 package com.alm.book.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -8,7 +9,7 @@ import java.util.Date;
 /**
  <p>table  书本章节</p>
  <p>author lishuai</p>
- <p>time   2019-12-22</p>
+ <p>time   2019-12-28</p>
 */
 @ApiModel("书本章节")
 public class BookChapter {
@@ -27,8 +28,8 @@ public class BookChapter {
     @ApiModelProperty("线路名称")
     private String lineName;
 
-    @ApiModelProperty("章节号")
-    private Integer no;
+    @ApiModelProperty("章节序数")
+    private Integer titleId;
 
     @ApiModelProperty("标题")
     private String title;
@@ -39,6 +40,7 @@ public class BookChapter {
     @ApiModelProperty("更新时间")
     private Date updateTime;
 
+    @JsonIgnore
     @ApiModelProperty("内容")
     private String content;
 
@@ -123,19 +125,19 @@ public class BookChapter {
     }
 
     /**
-     * 章节号
-     * @return no 章节号
+     * 章节序数
+     * @return titleId 章节序数
      */
-    public Integer getNo() {
-        return no;
+    public Integer getTitleId() {
+        return titleId;
     }
 
     /**
-     * 章节号
-     * @param no 章节号
+     * 章节序数
+     * @param titleId 章节序数
      */
-    public void setNo(Integer no) {
-        this.no = no;
+    public void setTitleId(Integer titleId) {
+        this.titleId = titleId;
     }
 
     /**

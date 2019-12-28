@@ -6,7 +6,6 @@
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="bookId" jdbcType="INTEGER" property="bookId" />
     <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
-    <result column="chapterNo" jdbcType="INTEGER" property="chapterNo" />
     <result column="pageNo" jdbcType="INTEGER" property="pageNo" />
     <result column="readDuration" jdbcType="INTEGER" property="readDuration" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -71,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, bookId, chapterId, chapterNo, pageNo, readDuration, createTime, updateTime
+    id, userId, bookId, chapterId, pageNo, readDuration, createTime, updateTime
   </sql>
   <select id="selectByExample" parameterType="com.alm.user.po.UserShelfExample" resultMap="BaseResultMap">
     select
@@ -105,13 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.alm.user.po.UserShelf">
     insert into t_user_shelf (id, userId, bookId, 
-      chapterId, chapterNo, pageNo, 
-      readDuration, createTime, updateTime
-      )
+      chapterId, pageNo, readDuration, 
+      createTime, updateTime)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
-      #{chapterId,jdbcType=INTEGER}, #{chapterNo,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, 
-      #{readDuration,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+      #{chapterId,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, #{readDuration,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.alm.user.po.UserShelf">
     insert into t_user_shelf
@@ -127,9 +124,6 @@
       </if>
       <if test="chapterId != null">
         chapterId,
-      </if>
-      <if test="chapterNo != null">
-        chapterNo,
       </if>
       <if test="pageNo != null">
         pageNo,
@@ -156,9 +150,6 @@
       </if>
       <if test="chapterId != null">
         #{chapterId,jdbcType=INTEGER},
-      </if>
-      <if test="chapterNo != null">
-        #{chapterNo,jdbcType=INTEGER},
       </if>
       <if test="pageNo != null">
         #{pageNo,jdbcType=INTEGER},
@@ -195,9 +186,6 @@
       <if test="record.chapterId != null">
         chapterId = #{record.chapterId,jdbcType=INTEGER},
       </if>
-      <if test="record.chapterNo != null">
-        chapterNo = #{record.chapterNo,jdbcType=INTEGER},
-      </if>
       <if test="record.pageNo != null">
         pageNo = #{record.pageNo,jdbcType=INTEGER},
       </if>
@@ -221,7 +209,6 @@
       userId = #{record.userId,jdbcType=INTEGER},
       bookId = #{record.bookId,jdbcType=INTEGER},
       chapterId = #{record.chapterId,jdbcType=INTEGER},
-      chapterNo = #{record.chapterNo,jdbcType=INTEGER},
       pageNo = #{record.pageNo,jdbcType=INTEGER},
       readDuration = #{record.readDuration,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
@@ -241,9 +228,6 @@
       </if>
       <if test="chapterId != null">
         chapterId = #{chapterId,jdbcType=INTEGER},
-      </if>
-      <if test="chapterNo != null">
-        chapterNo = #{chapterNo,jdbcType=INTEGER},
       </if>
       <if test="pageNo != null">
         pageNo = #{pageNo,jdbcType=INTEGER},
@@ -265,7 +249,6 @@
     set userId = #{userId,jdbcType=INTEGER},
       bookId = #{bookId,jdbcType=INTEGER},
       chapterId = #{chapterId,jdbcType=INTEGER},
-      chapterNo = #{chapterNo,jdbcType=INTEGER},
       pageNo = #{pageNo,jdbcType=INTEGER},
       readDuration = #{readDuration,jdbcType=INTEGER},
       createTime = #{createTime,jdbcType=TIMESTAMP},

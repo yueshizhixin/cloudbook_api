@@ -75,7 +75,7 @@ public class BookExample {
     }
 
     /**
-     * 书籍 2019-12-24
+     * 书籍 2019-12-28
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -388,73 +388,143 @@ public class BookExample {
             return (Criteria) this;
         }
 
-        public Criteria andBookImageIsNull() {
-            addCriterion("bookImage is null");
+        public Criteria andBookImageAlignIsNull() {
+            addCriterion("bookImageAlign is null");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageIsNotNull() {
-            addCriterion("bookImage is not null");
+        public Criteria andBookImageAlignIsNotNull() {
+            addCriterion("bookImageAlign is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageEqualTo(String value) {
-            addCriterion("bookImage =", value, "bookImage");
+        public Criteria andBookImageAlignEqualTo(String value) {
+            addCriterion("bookImageAlign =", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageNotEqualTo(String value) {
-            addCriterion("bookImage <>", value, "bookImage");
+        public Criteria andBookImageAlignNotEqualTo(String value) {
+            addCriterion("bookImageAlign <>", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageGreaterThan(String value) {
-            addCriterion("bookImage >", value, "bookImage");
+        public Criteria andBookImageAlignGreaterThan(String value) {
+            addCriterion("bookImageAlign >", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageGreaterThanOrEqualTo(String value) {
-            addCriterion("bookImage >=", value, "bookImage");
+        public Criteria andBookImageAlignGreaterThanOrEqualTo(String value) {
+            addCriterion("bookImageAlign >=", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageLessThan(String value) {
-            addCriterion("bookImage <", value, "bookImage");
+        public Criteria andBookImageAlignLessThan(String value) {
+            addCriterion("bookImageAlign <", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageLessThanOrEqualTo(String value) {
-            addCriterion("bookImage <=", value, "bookImage");
+        public Criteria andBookImageAlignLessThanOrEqualTo(String value) {
+            addCriterion("bookImageAlign <=", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageLike(String value) {
-            addCriterion("bookImage like", value, "bookImage");
+        public Criteria andBookImageAlignLike(String value) {
+            addCriterion("bookImageAlign like", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageNotLike(String value) {
-            addCriterion("bookImage not like", value, "bookImage");
+        public Criteria andBookImageAlignNotLike(String value) {
+            addCriterion("bookImageAlign not like", value, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageIn(List<String> values) {
-            addCriterion("bookImage in", values, "bookImage");
+        public Criteria andBookImageAlignIn(List<String> values) {
+            addCriterion("bookImageAlign in", values, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageNotIn(List<String> values) {
-            addCriterion("bookImage not in", values, "bookImage");
+        public Criteria andBookImageAlignNotIn(List<String> values) {
+            addCriterion("bookImageAlign not in", values, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageBetween(String value1, String value2) {
-            addCriterion("bookImage between", value1, value2, "bookImage");
+        public Criteria andBookImageAlignBetween(String value1, String value2) {
+            addCriterion("bookImageAlign between", value1, value2, "bookImageAlign");
             return (Criteria) this;
         }
 
-        public Criteria andBookImageNotBetween(String value1, String value2) {
-            addCriterion("bookImage not between", value1, value2, "bookImage");
+        public Criteria andBookImageAlignNotBetween(String value1, String value2) {
+            addCriterion("bookImageAlign not between", value1, value2, "bookImageAlign");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalIsNull() {
+            addCriterion("bookImageVertical is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalIsNotNull() {
+            addCriterion("bookImageVertical is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalEqualTo(String value) {
+            addCriterion("bookImageVertical =", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalNotEqualTo(String value) {
+            addCriterion("bookImageVertical <>", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalGreaterThan(String value) {
+            addCriterion("bookImageVertical >", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalGreaterThanOrEqualTo(String value) {
+            addCriterion("bookImageVertical >=", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalLessThan(String value) {
+            addCriterion("bookImageVertical <", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalLessThanOrEqualTo(String value) {
+            addCriterion("bookImageVertical <=", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalLike(String value) {
+            addCriterion("bookImageVertical like", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalNotLike(String value) {
+            addCriterion("bookImageVertical not like", value, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalIn(List<String> values) {
+            addCriterion("bookImageVertical in", values, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalNotIn(List<String> values) {
+            addCriterion("bookImageVertical not in", values, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalBetween(String value1, String value2) {
+            addCriterion("bookImageVertical between", value1, value2, "bookImageVertical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookImageVerticalNotBetween(String value1, String value2) {
+            addCriterion("bookImageVertical not between", value1, value2, "bookImageVertical");
             return (Criteria) this;
         }
 
@@ -980,7 +1050,7 @@ public class BookExample {
     }
 
     /**
-     * 书籍 2019-12-24
+     * 书籍 2019-12-28
      */
     public static class Criterion {
         private String condition;

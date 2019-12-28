@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
             return msg;
         }
 
-        me.setLatestTime(DateUtil.now());
+        me.setUpdateTime(DateUtil.now());
         userMapper.updateByPrimaryKeySelective(me);
 
         msg.setOk(1);

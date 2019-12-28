@@ -6,7 +6,6 @@
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="bookId" jdbcType="INTEGER" property="bookId" />
     <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
-    <result column="chapterNo" jdbcType="INTEGER" property="chapterNo" />
     <result column="pageNo" jdbcType="INTEGER" property="pageNo" />
     <result column="readDuration" jdbcType="INTEGER" property="readDuration" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -14,7 +13,8 @@
     <result column="bookName" jdbcType="VARCHAR" property="bookName" />
     <result column="bookAuthor" jdbcType="VARCHAR" property="bookAuthor" />
     <result column="bookAuthorImage" jdbcType="VARCHAR" property="bookAuthorImage" />
-    <result column="bookImage" jdbcType="VARCHAR" property="bookImage" />
+    <result column="bookImageVertical" jdbcType="VARCHAR" property="bookImageVertical" />
+    <result column="bookImageAlign" jdbcType="VARCHAR" property="bookImageAlign" />
     <result column="bookShortDescription" jdbcType="VARCHAR" property="bookShortDescription" />
     <result column="bookDescription" jdbcType="VARCHAR" property="bookDescription" />
     <result column="bookTag" jdbcType="VARCHAR" property="bookTag" />
@@ -83,9 +83,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, bookId, chapterId, chapterNo, pageNo, readDuration, createTime, updateTime, 
-    bookName, bookAuthor, bookAuthorImage, bookImage, bookShortDescription, bookDescription, 
-    bookTag, bookChapterCount, bookWordCount, bookTapCount, bookCreateTime, bookUpdateTime
+    id, userId, bookId, chapterId, pageNo, readDuration, createTime, updateTime, bookName, 
+    bookAuthor, bookAuthorImage, bookImageVertical, bookImageAlign, bookShortDescription, 
+    bookDescription, bookTag, bookChapterCount, bookWordCount, bookTapCount, bookCreateTime, 
+    bookUpdateTime
   </sql>
   <select id="selectByExample" parameterType="com.alm.user.po.ViewUserShelfExample" resultMap="BaseResultMap">
     select
@@ -109,18 +110,18 @@
   </delete>
   <insert id="insert" parameterType="com.alm.user.po.ViewUserShelf">
     insert into v_user_shelf (id, userId, bookId, 
-      chapterId, chapterNo, pageNo, 
-      readDuration, createTime, updateTime, 
-      bookName, bookAuthor, bookAuthorImage, 
-      bookImage, bookShortDescription, bookDescription, 
+      chapterId, pageNo, readDuration, 
+      createTime, updateTime, bookName, 
+      bookAuthor, bookAuthorImage, bookImageVertical, 
+      bookImageAlign, bookShortDescription, bookDescription, 
       bookTag, bookChapterCount, bookWordCount, 
       bookTapCount, bookCreateTime, bookUpdateTime
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
-      #{chapterId,jdbcType=INTEGER}, #{chapterNo,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, 
-      #{readDuration,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=VARCHAR}, #{bookAuthorImage,jdbcType=VARCHAR}, 
-      #{bookImage,jdbcType=VARCHAR}, #{bookShortDescription,jdbcType=VARCHAR}, #{bookDescription,jdbcType=VARCHAR}, 
+      #{chapterId,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, #{readDuration,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{bookName,jdbcType=VARCHAR}, 
+      #{bookAuthor,jdbcType=VARCHAR}, #{bookAuthorImage,jdbcType=VARCHAR}, #{bookImageVertical,jdbcType=VARCHAR}, 
+      #{bookImageAlign,jdbcType=VARCHAR}, #{bookShortDescription,jdbcType=VARCHAR}, #{bookDescription,jdbcType=VARCHAR}, 
       #{bookTag,jdbcType=VARCHAR}, #{bookChapterCount,jdbcType=INTEGER}, #{bookWordCount,jdbcType=DECIMAL}, 
       #{bookTapCount,jdbcType=INTEGER}, #{bookCreateTime,jdbcType=TIMESTAMP}, #{bookUpdateTime,jdbcType=TIMESTAMP}
       )
@@ -139,9 +140,6 @@
       </if>
       <if test="chapterId != null">
         chapterId,
-      </if>
-      <if test="chapterNo != null">
-        chapterNo,
       </if>
       <if test="pageNo != null">
         pageNo,
@@ -164,8 +162,11 @@
       <if test="bookAuthorImage != null">
         bookAuthorImage,
       </if>
-      <if test="bookImage != null">
-        bookImage,
+      <if test="bookImageVertical != null">
+        bookImageVertical,
+      </if>
+      <if test="bookImageAlign != null">
+        bookImageAlign,
       </if>
       <if test="bookShortDescription != null">
         bookShortDescription,
@@ -205,9 +206,6 @@
       <if test="chapterId != null">
         #{chapterId,jdbcType=INTEGER},
       </if>
-      <if test="chapterNo != null">
-        #{chapterNo,jdbcType=INTEGER},
-      </if>
       <if test="pageNo != null">
         #{pageNo,jdbcType=INTEGER},
       </if>
@@ -229,8 +227,11 @@
       <if test="bookAuthorImage != null">
         #{bookAuthorImage,jdbcType=VARCHAR},
       </if>
-      <if test="bookImage != null">
-        #{bookImage,jdbcType=VARCHAR},
+      <if test="bookImageVertical != null">
+        #{bookImageVertical,jdbcType=VARCHAR},
+      </if>
+      <if test="bookImageAlign != null">
+        #{bookImageAlign,jdbcType=VARCHAR},
       </if>
       <if test="bookShortDescription != null">
         #{bookShortDescription,jdbcType=VARCHAR},
@@ -279,9 +280,6 @@
       <if test="record.chapterId != null">
         chapterId = #{record.chapterId,jdbcType=INTEGER},
       </if>
-      <if test="record.chapterNo != null">
-        chapterNo = #{record.chapterNo,jdbcType=INTEGER},
-      </if>
       <if test="record.pageNo != null">
         pageNo = #{record.pageNo,jdbcType=INTEGER},
       </if>
@@ -303,8 +301,11 @@
       <if test="record.bookAuthorImage != null">
         bookAuthorImage = #{record.bookAuthorImage,jdbcType=VARCHAR},
       </if>
-      <if test="record.bookImage != null">
-        bookImage = #{record.bookImage,jdbcType=VARCHAR},
+      <if test="record.bookImageVertical != null">
+        bookImageVertical = #{record.bookImageVertical,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bookImageAlign != null">
+        bookImageAlign = #{record.bookImageAlign,jdbcType=VARCHAR},
       </if>
       <if test="record.bookShortDescription != null">
         bookShortDescription = #{record.bookShortDescription,jdbcType=VARCHAR},
@@ -341,7 +342,6 @@
       userId = #{record.userId,jdbcType=INTEGER},
       bookId = #{record.bookId,jdbcType=INTEGER},
       chapterId = #{record.chapterId,jdbcType=INTEGER},
-      chapterNo = #{record.chapterNo,jdbcType=INTEGER},
       pageNo = #{record.pageNo,jdbcType=INTEGER},
       readDuration = #{record.readDuration,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},
@@ -349,7 +349,8 @@
       bookName = #{record.bookName,jdbcType=VARCHAR},
       bookAuthor = #{record.bookAuthor,jdbcType=VARCHAR},
       bookAuthorImage = #{record.bookAuthorImage,jdbcType=VARCHAR},
-      bookImage = #{record.bookImage,jdbcType=VARCHAR},
+      bookImageVertical = #{record.bookImageVertical,jdbcType=VARCHAR},
+      bookImageAlign = #{record.bookImageAlign,jdbcType=VARCHAR},
       bookShortDescription = #{record.bookShortDescription,jdbcType=VARCHAR},
       bookDescription = #{record.bookDescription,jdbcType=VARCHAR},
       bookTag = #{record.bookTag,jdbcType=VARCHAR},

@@ -74,7 +74,7 @@ public class BookChapterExample {
     }
 
     /**
-     * 书本章节 2019-12-22
+     * 书本章节 2019-12-28
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -437,63 +437,63 @@ public class BookChapterExample {
             return (Criteria) this;
         }
 
-        public Criteria andNoIsNull() {
-            addCriterion("no is null");
+        public Criteria andTitleIdIsNull() {
+            addCriterion("titleId is null");
             return (Criteria) this;
         }
 
-        public Criteria andNoIsNotNull() {
-            addCriterion("no is not null");
+        public Criteria andTitleIdIsNotNull() {
+            addCriterion("titleId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNoEqualTo(Integer value) {
-            addCriterion("no =", value, "no");
+        public Criteria andTitleIdEqualTo(Integer value) {
+            addCriterion("titleId =", value, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoNotEqualTo(Integer value) {
-            addCriterion("no <>", value, "no");
+        public Criteria andTitleIdNotEqualTo(Integer value) {
+            addCriterion("titleId <>", value, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoGreaterThan(Integer value) {
-            addCriterion("no >", value, "no");
+        public Criteria andTitleIdGreaterThan(Integer value) {
+            addCriterion("titleId >", value, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoGreaterThanOrEqualTo(Integer value) {
-            addCriterion("no >=", value, "no");
+        public Criteria andTitleIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("titleId >=", value, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoLessThan(Integer value) {
-            addCriterion("no <", value, "no");
+        public Criteria andTitleIdLessThan(Integer value) {
+            addCriterion("titleId <", value, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoLessThanOrEqualTo(Integer value) {
-            addCriterion("no <=", value, "no");
+        public Criteria andTitleIdLessThanOrEqualTo(Integer value) {
+            addCriterion("titleId <=", value, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoIn(List<Integer> values) {
-            addCriterion("no in", values, "no");
+        public Criteria andTitleIdIn(List<Integer> values) {
+            addCriterion("titleId in", values, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoNotIn(List<Integer> values) {
-            addCriterion("no not in", values, "no");
+        public Criteria andTitleIdNotIn(List<Integer> values) {
+            addCriterion("titleId not in", values, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoBetween(Integer value1, Integer value2) {
-            addCriterion("no between", value1, value2, "no");
+        public Criteria andTitleIdBetween(Integer value1, Integer value2) {
+            addCriterion("titleId between", value1, value2, "titleId");
             return (Criteria) this;
         }
 
-        public Criteria andNoNotBetween(Integer value1, Integer value2) {
-            addCriterion("no not between", value1, value2, "no");
+        public Criteria andTitleIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("titleId not between", value1, value2, "titleId");
             return (Criteria) this;
         }
 
@@ -699,7 +699,7 @@ public class BookChapterExample {
     }
 
     /**
-     * 书本章节 2019-12-22
+     * 书本章节 2019-12-28
      */
     public static class Criterion {
         private String condition;

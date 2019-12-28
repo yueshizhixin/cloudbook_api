@@ -39,11 +39,12 @@ public class BookController {
     }
 
     @ApiOperation("我的书架")
-    @Authority
+//    @Authority
     @RequestMapping(value = "/shelf", method = RequestMethod.GET)
     public String getMyBookShelf(@RequestParam int offset,@RequestParam int limit, HttpSession session) {
-        User user= (User) session.getAttribute(SessionEnum.user.AttrKey());
-        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,user.getId()));
+//        User user= (User) session.getAttribute(SessionEnum.user.AttrKey());
+//        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,user.getId()));
+        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,1));
     }
 
     @ApiOperation("书籍详情")

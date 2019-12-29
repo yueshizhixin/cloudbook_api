@@ -40,4 +40,15 @@ public class BookServiceImplTest {
 
 
     }
+
+    @Test
+    public void getBookTitleList() {
+        System.out.println(JSONUtil.format(bookService.getBookTitleList(1,20,2)));
+    }
+
+    @Test
+    public void getChapterContent() {
+        System.out.println(JSONUtil.format(bookService.getChapterContent(2)));
+
+    }
 }

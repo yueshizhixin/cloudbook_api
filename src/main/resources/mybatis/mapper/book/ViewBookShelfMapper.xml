@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.alm.user.mapper.ViewUserShelfMapper">
-  <resultMap id="BaseResultMap" type="com.alm.user.po.ViewUserShelf">
+<mapper namespace="com.alm.book.mapper.ViewBookShelfMapper">
+  <resultMap id="BaseResultMap" type="com.alm.book.po.ViewBookShelf">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="bookId" jdbcType="INTEGER" property="bookId" />
     <result column="chapterId" jdbcType="INTEGER" property="chapterId" />
+    <result column="chapterNo" jdbcType="INTEGER" property="chapterNo" />
     <result column="pageNo" jdbcType="INTEGER" property="pageNo" />
     <result column="readDuration" jdbcType="INTEGER" property="readDuration" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
@@ -83,18 +84,18 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userId, bookId, chapterId, pageNo, readDuration, createTime, updateTime, bookName, 
-    bookAuthor, bookAuthorImage, bookImageVertical, bookImageAlign, bookShortDescription, 
+    id, userId, bookId, chapterId, chapterNo, pageNo, readDuration, createTime, updateTime, 
+    bookName, bookAuthor, bookAuthorImage, bookImageVertical, bookImageAlign, bookShortDescription, 
     bookDescription, bookTag, bookChapterCount, bookWordCount, bookTapCount, bookCreateTime, 
     bookUpdateTime
   </sql>
-  <select id="selectByExample" parameterType="com.alm.user.po.ViewUserShelfExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.alm.book.po.ViewBookShelfExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from v_user_shelf
+    from v_book_shelf
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -102,32 +103,32 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.alm.user.po.ViewUserShelfExample">
-    delete from v_user_shelf
+  <delete id="deleteByExample" parameterType="com.alm.book.po.ViewBookShelfExample">
+    delete from v_book_shelf
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.alm.user.po.ViewUserShelf">
-    insert into v_user_shelf (id, userId, bookId, 
-      chapterId, pageNo, readDuration, 
-      createTime, updateTime, bookName, 
-      bookAuthor, bookAuthorImage, bookImageVertical, 
-      bookImageAlign, bookShortDescription, bookDescription, 
-      bookTag, bookChapterCount, bookWordCount, 
-      bookTapCount, bookCreateTime, bookUpdateTime
-      )
+  <insert id="insert" parameterType="com.alm.book.po.ViewBookShelf">
+    insert into v_book_shelf (id, userId, bookId, 
+      chapterId, chapterNo, pageNo, 
+      readDuration, createTime, updateTime, 
+      bookName, bookAuthor, bookAuthorImage, 
+      bookImageVertical, bookImageAlign, bookShortDescription, 
+      bookDescription, bookTag, bookChapterCount, 
+      bookWordCount, bookTapCount, bookCreateTime, 
+      bookUpdateTime)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
-      #{chapterId,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, #{readDuration,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{bookName,jdbcType=VARCHAR}, 
-      #{bookAuthor,jdbcType=VARCHAR}, #{bookAuthorImage,jdbcType=VARCHAR}, #{bookImageVertical,jdbcType=VARCHAR}, 
-      #{bookImageAlign,jdbcType=VARCHAR}, #{bookShortDescription,jdbcType=VARCHAR}, #{bookDescription,jdbcType=VARCHAR}, 
-      #{bookTag,jdbcType=VARCHAR}, #{bookChapterCount,jdbcType=INTEGER}, #{bookWordCount,jdbcType=DECIMAL}, 
-      #{bookTapCount,jdbcType=INTEGER}, #{bookCreateTime,jdbcType=TIMESTAMP}, #{bookUpdateTime,jdbcType=TIMESTAMP}
-      )
+      #{chapterId,jdbcType=INTEGER}, #{chapterNo,jdbcType=INTEGER}, #{pageNo,jdbcType=INTEGER}, 
+      #{readDuration,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{bookName,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=VARCHAR}, #{bookAuthorImage,jdbcType=VARCHAR}, 
+      #{bookImageVertical,jdbcType=VARCHAR}, #{bookImageAlign,jdbcType=VARCHAR}, #{bookShortDescription,jdbcType=VARCHAR}, 
+      #{bookDescription,jdbcType=VARCHAR}, #{bookTag,jdbcType=VARCHAR}, #{bookChapterCount,jdbcType=INTEGER}, 
+      #{bookWordCount,jdbcType=DECIMAL}, #{bookTapCount,jdbcType=INTEGER}, #{bookCreateTime,jdbcType=TIMESTAMP}, 
+      #{bookUpdateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.alm.user.po.ViewUserShelf">
-    insert into v_user_shelf
+  <insert id="insertSelective" parameterType="com.alm.book.po.ViewBookShelf">
+    insert into v_book_shelf
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -140,6 +141,9 @@
       </if>
       <if test="chapterId != null">
         chapterId,
+      </if>
+      <if test="chapterNo != null">
+        chapterNo,
       </if>
       <if test="pageNo != null">
         pageNo,
@@ -206,6 +210,9 @@
       <if test="chapterId != null">
         #{chapterId,jdbcType=INTEGER},
       </if>
+      <if test="chapterNo != null">
+        #{chapterNo,jdbcType=INTEGER},
+      </if>
       <if test="pageNo != null">
         #{pageNo,jdbcType=INTEGER},
       </if>
@@ -259,14 +266,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.alm.user.po.ViewUserShelfExample" resultType="java.lang.Long">
-    select count(*) from v_user_shelf
+  <select id="countByExample" parameterType="com.alm.book.po.ViewBookShelfExample" resultType="java.lang.Long">
+    select count(*) from v_book_shelf
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update v_user_shelf
+    update v_book_shelf
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -279,6 +286,9 @@
       </if>
       <if test="record.chapterId != null">
         chapterId = #{record.chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.chapterNo != null">
+        chapterNo = #{record.chapterNo,jdbcType=INTEGER},
       </if>
       <if test="record.pageNo != null">
         pageNo = #{record.pageNo,jdbcType=INTEGER},
@@ -337,11 +347,12 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update v_user_shelf
+    update v_book_shelf
     set id = #{record.id,jdbcType=INTEGER},
       userId = #{record.userId,jdbcType=INTEGER},
       bookId = #{record.bookId,jdbcType=INTEGER},
       chapterId = #{record.chapterId,jdbcType=INTEGER},
+      chapterNo = #{record.chapterNo,jdbcType=INTEGER},
       pageNo = #{record.pageNo,jdbcType=INTEGER},
       readDuration = #{record.readDuration,jdbcType=INTEGER},
       createTime = #{record.createTime,jdbcType=TIMESTAMP},

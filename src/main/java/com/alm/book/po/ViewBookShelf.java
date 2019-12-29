@@ -1,4 +1,4 @@
-package com.alm.user.po;
+package com.alm.book.po;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,10 +9,10 @@ import java.util.Date;
 /**
  <p>table  VIEW</p>
  <p>author lishuai</p>
- <p>time   2019-12-28</p>
+ <p>time   2019-12-29</p>
 */
 @ApiModel("VIEW")
-public class ViewUserShelf {
+public class ViewBookShelf {
     @ApiModelProperty("主键标识")
     private Integer id;
 
@@ -25,6 +25,9 @@ public class ViewUserShelf {
     @ApiModelProperty("阅读记录章节表id")
     private Integer chapterId;
 
+    @ApiModelProperty("阅读记录章节序号")
+    private Integer chapterNo;
+
     @ApiModelProperty("阅读记录页数")
     private Integer pageNo;
 
@@ -34,7 +37,7 @@ public class ViewUserShelf {
     @ApiModelProperty("创建时间")
     private Date createTime;
 
-    @ApiModelProperty("最后阅读时间")
+    @ApiModelProperty("更新时间")
     private Date updateTime;
 
     @ApiModelProperty("书名")
@@ -141,6 +144,22 @@ public class ViewUserShelf {
     }
 
     /**
+     * 阅读记录章节序号
+     * @return chapterNo 阅读记录章节序号
+     */
+    public Integer getChapterNo() {
+        return chapterNo;
+    }
+
+    /**
+     * 阅读记录章节序号
+     * @param chapterNo 阅读记录章节序号
+     */
+    public void setChapterNo(Integer chapterNo) {
+        this.chapterNo = chapterNo;
+    }
+
+    /**
      * 阅读记录页数
      * @return pageNo 阅读记录页数
      */
@@ -189,16 +208,16 @@ public class ViewUserShelf {
     }
 
     /**
-     * 最后阅读时间
-     * @return updateTime 最后阅读时间
+     * 更新时间
+     * @return updateTime 更新时间
      */
     public Date getUpdateTime() {
         return updateTime;
     }
 
     /**
-     * 最后阅读时间
-     * @param updateTime 最后阅读时间
+     * 更新时间
+     * @param updateTime 更新时间
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;

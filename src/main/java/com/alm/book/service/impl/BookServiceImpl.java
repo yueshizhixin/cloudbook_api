@@ -1,16 +1,8 @@
 package com.alm.book.service.impl;
 
-import com.alm.book.mapper.BookMapper;
-import com.alm.book.po.Book;
-import com.alm.book.po.BookExample;
+import com.alm.book.mapper.*;
+import com.alm.book.po.*;
 import com.alm.book.service.BookService;
-import com.alm.user.mapper.UserShelfMapper;
-import com.alm.user.mapper.ViewUserShelfMapper;
-import com.alm.user.po.User;
-import com.alm.user.po.UserShelfExample;
-import com.alm.user.po.ViewUserShelf;
-import com.alm.user.po.ViewUserShelfExample;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,51 +19,70 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     private final BookMapper bookMapper;
-    private final ViewUserShelfMapper viewUserShelfMapper;
+    private final ViewBookShelfMapper viewBookShelfMapper;
+    private final BookChapterMapper bookChapterMapper;
+    private final BookChapterContentMapper bookChapterContentMapper;
 
     @Autowired
-    public BookServiceImpl(BookMapper bookMapper, UserShelfMapper userShelfMapper, ViewUserShelfMapper viewUserShelfMapper) {
+    public BookServiceImpl(BookMapper bookMapper, BookShelfMapper BookShelfMapper, ViewBookShelfMapper viewBookShelfMapper, BookChapterMapper bookChapterMapper, BookChapterContentMapper bookChapterContentMapper) {
         this.bookMapper = bookMapper;
-        this.viewUserShelfMapper = viewUserShelfMapper;
+        this.viewBookShelfMapper = viewBookShelfMapper;
+        this.bookChapterMapper = bookChapterMapper;
+        this.bookChapterContentMapper = bookChapterContentMapper;
     }
 
     /**
      * 获取商城所有书籍
-     *
-     * @return
      */
     @Override
-    public List<Book> getShopBookList(int offset,int limit) {
+    public List<Book> getShopBookList(int offset, int limit) {
 
-        BookExample example=new BookExample();
+        BookExample example = new BookExample();
         example.setOrderByClause("id asc");
-        PageHelper.startPage(offset,limit);
-        List<Book> list=bookMapper.selectByExample(example);
+        PageHelper.startPage(offset, limit);
+        List<Book> list = bookMapper.selectByExample(example);
         return list;
     }
 
     /**
      * 获取我的书架
-     *
-     * @return
      */
     @Override
-    public List<ViewUserShelf> getMyBookShelf(int offset,int limit,int userId) {
-        ViewUserShelfExample example=new ViewUserShelfExample();
+    public List<ViewBookShelf> getMyBookShelf(int offset, int limit, int userId) {
+        ViewBookShelfExample example = new ViewBookShelfExample();
         example.createCriteria().andUserIdEqualTo(userId);
         example.setOrderByClause("updateTime desc");
-        PageHelper.startPage(offset,limit);
-        return viewUserShelfMapper.selectByExample(example);
+        PageHelper.startPage(offset, limit);
+        return viewBookShelfMapper.selectByExample(example);
     }
 
     /**
      * 获取书籍详情
-     *
-     * @param bookId
-     * @return
      */
     @Override
     public Book getBookDetail(int bookId) {
         return bookMapper.selectByPrimaryKey(bookId);
+    }
+
+    /**
+     * 获取书籍目录
+     */
+    @Override
+    public List<BookChapter> getBookTitleList(int offset, int limit, int bookId) {
+        BookChapterExample example = new BookChapterExample();
+        example.createCriteria().andBookIdEqualTo(bookId);
+        example.setOrderByClause("titleId asc");
+        PageHelper.startPage(offset, limit);
+        List<BookChapter> list = bookChapterMapper.selectByExample(example);
+        return list;
+    }
+
+    /**
+     * 获取章节内容
+     * @param id 章节表id
+     */
+    @Override
+    public BookChapterContent getChapterContent(int id) {
+        return bookChapterContentMapper.selectByPrimaryKey(id);
     }
 }

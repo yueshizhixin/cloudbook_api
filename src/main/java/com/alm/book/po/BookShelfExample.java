@@ -1,26 +1,26 @@
-package com.alm.user.po;
+package com.alm.book.po;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserShelfExample {
+public class BookShelfExample {
     /**
-     * t_user_shelf
+     * t_book_shelf
      */
     protected String orderByClause;
 
     /**
-     * t_user_shelf
+     * t_book_shelf
      */
     protected boolean distinct;
 
     /**
-     * t_user_shelf
+     * t_book_shelf
      */
     protected List<Criteria> oredCriteria;
 
-    public UserShelfExample() {
+    public BookShelfExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -74,7 +74,7 @@ public class UserShelfExample {
     }
 
     /**
-     * 我的书架 2019-12-28
+     * 我的书架 2019-12-29
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -357,6 +357,66 @@ public class UserShelfExample {
             return (Criteria) this;
         }
 
+        public Criteria andChapterNoIsNull() {
+            addCriterion("chapterNo is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoIsNotNull() {
+            addCriterion("chapterNo is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoEqualTo(Integer value) {
+            addCriterion("chapterNo =", value, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoNotEqualTo(Integer value) {
+            addCriterion("chapterNo <>", value, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoGreaterThan(Integer value) {
+            addCriterion("chapterNo >", value, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("chapterNo >=", value, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoLessThan(Integer value) {
+            addCriterion("chapterNo <", value, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoLessThanOrEqualTo(Integer value) {
+            addCriterion("chapterNo <=", value, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoIn(List<Integer> values) {
+            addCriterion("chapterNo in", values, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoNotIn(List<Integer> values) {
+            addCriterion("chapterNo not in", values, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoBetween(Integer value1, Integer value2) {
+            addCriterion("chapterNo between", value1, value2, "chapterNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andChapterNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("chapterNo not between", value1, value2, "chapterNo");
+            return (Criteria) this;
+        }
+
         public Criteria andPageNoIsNull() {
             addCriterion("pageNo is null");
             return (Criteria) this;
@@ -599,7 +659,7 @@ public class UserShelfExample {
     }
 
     /**
-     * t_user_shelf
+     * t_book_shelf
      */
     public static class Criteria extends GeneratedCriteria {
 
@@ -609,7 +669,7 @@ public class UserShelfExample {
     }
 
     /**
-     * 我的书架 2019-12-28
+     * 我的书架 2019-12-29
      */
     public static class Criterion {
         private String condition;

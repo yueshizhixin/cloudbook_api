@@ -7,7 +7,6 @@ import com.alm.user.po.User;
 import com.alm.user.service.UserService;
 import com.alm.util.JSONUtil;
 import com.alm.util.RESTUtil;
-import com.sun.deploy.net.HttpUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ import javax.servlet.http.HttpSession;
  */
 @Api(value = "用户")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     private final UserService userService;
@@ -34,7 +33,7 @@ public class UserController {
     }
 
     @ApiOperation("登录")
-    @RequestMapping(value = "/user/tag=sign=in", method = RequestMethod.POST)
+    @RequestMapping(value = "/tag=sign=in", method = RequestMethod.POST)
     public String signIn(@RequestParam String phone, @RequestParam String pwd, HttpSession session) {
         User user = new User();
         user.setPhone(phone);
@@ -48,7 +47,7 @@ public class UserController {
 
     @ApiOperation("登出")
     @Authority
-    @RequestMapping(value = "/user/tag=sign=out", method = RequestMethod.POST)
+    @RequestMapping(value = "/tag=sign=out", method = RequestMethod.POST)
     public String signOut(HttpSession session) {
         session.setAttribute(SessionEnum.user.AttrKey(), null);
         Message msg = new Message(1);
@@ -57,7 +56,7 @@ public class UserController {
 
     @ApiOperation("获取我的信息")
     @Authority
-    @RequestMapping(value = "/user/tag=me", method = RequestMethod.GET)
+    @RequestMapping(value = "/tag=me", method = RequestMethod.GET)
     public String myMessage(HttpSession session) {
         User user = (User) session.getAttribute(SessionEnum.user.AttrKey());
         return RESTUtil.HTTP200(user);

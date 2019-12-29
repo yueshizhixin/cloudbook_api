@@ -1,6 +1,7 @@
 package com.alm.book.controller;
 
 import com.alm.book.po.Book;
+import com.alm.book.po.BookChapterContent;
 import com.alm.book.service.BookService;
 import com.alm.enume.SessionEnum;
 import com.alm.system.authority.Authority;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpSession;
  */
 @Api(value = "书籍")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/book")
 public class BookController {
 
     private final BookService bookService;
@@ -33,7 +34,7 @@ public class BookController {
     }
 
     @ApiOperation("书城列表")
-    @RequestMapping(value = "/book", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop", method = RequestMethod.GET)
     public String getShopBookList(@RequestParam int offset,@RequestParam int limit) {
         return RESTUtil.HTTP200(bookService.getShopBookList(offset,limit));
     }
@@ -48,9 +49,21 @@ public class BookController {
     }
 
     @ApiOperation("书籍详情")
-    @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
     public String getBookDetail(@ModelAttribute Book book){
         return RESTUtil.HTTP200(bookService.getBookDetail(book.getId()));
+    }
+
+    @ApiOperation("书籍目录")
+    @RequestMapping(value = "/{id}/chapter", method = RequestMethod.GET)
+    public String getBookTitleList(@RequestParam int offset,@RequestParam int limit,@ModelAttribute Book book) {
+        return RESTUtil.HTTP200(bookService.getBookTitleList(offset,limit,book.getId()));
+    }
+
+    @ApiOperation("章节内容")
+    @RequestMapping(value = "/chapter/{id}/content", method = RequestMethod.GET)
+    public String getChapterContent(@ModelAttribute BookChapterContent bookChapterContent) {
+        return RESTUtil.HTTP200(bookService.getChapterContent(bookChapterContent.getId()));
     }
 
 

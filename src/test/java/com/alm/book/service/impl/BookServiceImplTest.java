@@ -1,6 +1,7 @@
 package com.alm.book.service.impl;
 
 import com.alm.book.po.Book;
+import com.alm.book.po.BookShelf;
 import com.alm.book.service.BookService;
 import com.alm.user.po.User;
 import com.alm.util.JSONUtil;
@@ -49,6 +50,22 @@ public class BookServiceImplTest {
     @Test
     public void getChapterContent() {
         System.out.println(JSONUtil.format(bookService.getChapterContent(2)));
+
+    }
+
+    @Test
+    public void updateBookShelfReadLine() {
+        BookShelf bs = new BookShelf();
+        bs.setUserId(1);
+        bs.setBookId(99);
+        bs.setChapterNo(999);
+        System.out.println(JSONUtil.format(bookService.updateBookShelfReadLine(bs)));
+
+    }
+
+    @Test
+    public void getChapterTitle() {
+        System.out.println(JSONUtil.format(bookService.getChapterTitle(1011)));
 
     }
 }

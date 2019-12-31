@@ -1,7 +1,9 @@
 package com.alm.book.controller;
 
 import com.alm.book.po.Book;
+import com.alm.book.po.BookChapter;
 import com.alm.book.po.BookChapterContent;
+import com.alm.book.po.BookShelf;
 import com.alm.book.service.BookService;
 import com.alm.enume.SessionEnum;
 import com.alm.system.authority.Authority;
@@ -39,6 +41,10 @@ public class BookController {
         return RESTUtil.HTTP200(bookService.getShopBookList(offset,limit));
     }
 
+    /**
+     * 这块一下要确认权限
+     */
+
     @ApiOperation("我的书架")
 //    @Authority
     @RequestMapping(value = "/shelf", method = RequestMethod.GET)
@@ -66,5 +72,18 @@ public class BookController {
         return RESTUtil.HTTP200(bookService.getChapterContent(bookChapterContent.getId()));
     }
 
+    @ApiOperation("更新阅读记录")
+    @RequestMapping(value = "/{bookId}/chapter/{chapterNo}", method = RequestMethod.PUT)
+    public String updateBookReadLine(@ModelAttribute BookShelf bookShelf) {
+        int userId=1;
+        bookShelf.setUserId(userId);
+        return RESTUtil.HTTP200(bookService.updateBookShelfReadLine(bookShelf));
+    }
+
+    @ApiOperation("最终舍弃/章节标题")
+    @RequestMapping(value = "/chapter/{id}/title", method = RequestMethod.GET)
+    public String getChapterTitle(@ModelAttribute BookChapter bookChapter) {
+        return RESTUtil.HTTP200(bookService.getChapterTitle(bookChapter.getId()));
+    }
 
 }

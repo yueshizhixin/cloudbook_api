@@ -1,9 +1,7 @@
 package com.alm.book.service;
 
-import com.alm.book.po.Book;
-import com.alm.book.po.BookChapter;
-import com.alm.book.po.BookChapterContent;
-import com.alm.book.po.ViewBookShelf;
+import com.alm.book.po.*;
+import com.alm.system.vo.Message;
 
 import java.util.List;
 
@@ -40,5 +38,16 @@ public interface BookService {
      * @param id 章节表id
      */
     public BookChapterContent getChapterContent(int id);
+
+    /**
+     * 更新阅读记录
+     */
+    public Message updateBookShelfReadLine(BookShelf bookShelf);
+
+    /**
+     * 获取章节标题
+     * 最终舍弃
+     */
+    public BookChapter getChapterTitle(int chapterId);
 
 }

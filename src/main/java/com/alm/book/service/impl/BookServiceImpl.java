@@ -3,6 +3,10 @@ package com.alm.book.service.impl;
 import com.alm.book.mapper.*;
 import com.alm.book.po.*;
 import com.alm.book.service.BookService;
+import com.alm.system.vo.Message;
+import com.alm.user.mapper.UserMapper;
+import com.alm.user.po.UserExample;
+import com.alm.util.DateUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +22,25 @@ import java.util.List;
 @Service("bookService")
 public class BookServiceImpl implements BookService {
 
+    private final UserMapper userMapper;
+
     private final BookMapper bookMapper;
-    private final ViewBookShelfMapper viewBookShelfMapper;
+    private final BookShelfMapper bookShelfMapper;
     private final BookChapterMapper bookChapterMapper;
     private final BookChapterContentMapper bookChapterContentMapper;
 
+    private final ViewBookShelfMapper viewBookShelfMapper;
+
+
     @Autowired
-    public BookServiceImpl(BookMapper bookMapper, BookShelfMapper BookShelfMapper, ViewBookShelfMapper viewBookShelfMapper, BookChapterMapper bookChapterMapper, BookChapterContentMapper bookChapterContentMapper) {
+    public BookServiceImpl(BookMapper bookMapper, BookShelfMapper BookShelfMapper, UserMapper userMapper, BookShelfMapper bookShelfMapper, ViewBookShelfMapper viewBookShelfMapper, BookChapterMapper bookChapterMapper, BookChapterContentMapper bookChapterContentMapper) {
+
         this.bookMapper = bookMapper;
-        this.viewBookShelfMapper = viewBookShelfMapper;
+        this.userMapper = userMapper;
+        this.bookShelfMapper = bookShelfMapper;
         this.bookChapterMapper = bookChapterMapper;
         this.bookChapterContentMapper = bookChapterContentMapper;
+        this.viewBookShelfMapper = viewBookShelfMapper;
     }
 
     /**
@@ -79,10 +91,63 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 获取章节内容
+     *
      * @param id 章节表id
      */
     @Override
     public BookChapterContent getChapterContent(int id) {
         return bookChapterContentMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 更新阅读记录
+     */
+    @Override
+    public Message updateBookShelfReadLine(BookShelf bookShelf) {
+        Message msg = new Message();
+
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andIdEqualTo(bookShelf.getUserId());
+        long userCount = userMapper.countByExample(userExample);
+        if (userCount != 1) {
+            msg.setMsg("用户信息错误");
+            return msg;
+        }
+
+        BookExample bookExample = new BookExample();
+        bookExample.createCriteria().andIdEqualTo(bookShelf.getBookId());
+        long bookCount = bookMapper.countByExample(bookExample);
+        if (bookCount != 1) {
+            msg.setMsg("书本信息错误");
+            return msg;
+        }
+
+        //bookline
+
+        BookShelfExample example = new BookShelfExample();
+        example.createCriteria().andUserIdEqualTo(bookShelf.getUserId())
+                .andBookIdEqualTo(bookShelf.getBookId());
+        long bookShelfCount = bookShelfMapper.countByExample(example);
+        if (bookShelfCount != 1) {
+            msg.setMsg("阅读记录错误");
+            return msg;
+        }
+
+        bookShelf.setUpdateTime(DateUtil.now());
+        bookShelf.setChapterId(bookShelf.getChapterNo());
+        bookShelfMapper.updateByExampleSelective(bookShelf, example);
+        msg.setOk(1);
+        msg.setMsg("操作成功");
+        msg.setData(bookShelf);
+        return msg;
+    }
+
+    /**
+     * 获取章节标题
+     * 最终舍弃
+     */
+    @Override
+    public BookChapter getChapterTitle(int chapterId) {
+        return bookChapterMapper.selectByPrimaryKey(chapterId);
     }
 }

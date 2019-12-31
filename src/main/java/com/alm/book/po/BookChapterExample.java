@@ -74,7 +74,7 @@ public class BookChapterExample {
     }
 
     /**
-     * 书本章节 2019-12-28
+     * 书本章节 2019-12-31
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -699,7 +699,7 @@ public class BookChapterExample {
     }
 
     /**
-     * 书本章节 2019-12-28
+     * 书本章节 2019-12-31
      */
     public static class Criterion {
         private String condition;

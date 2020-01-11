@@ -6,6 +6,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.google.common.base.Strings;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.util.Date;
@@ -20,20 +21,20 @@ public class JWTUtil {
      */
     private static String createToken(String type,Map<String, String> claims) {
         try {
-            System.out.println(DateUtils.addHours(new Date(), 1));
+
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
             JWTCreator.Builder builder = JWT.create()
-                    .withIssuer(type)
-                    //设置过期时间为2小时
-                    .withExpiresAt(DateUtils.addHours(new Date(), 1));
+                    .withIssuer(type);
             claims.forEach(builder::withClaim);
             return builder.sign(algorithm);
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
 
     public static String createUserToken(Map<String, String> claims) {
+        claims.put("exp",DateUtil.toString(DateUtils.addHours(new Date(), 1)));
         return JWTUtil.createToken("user", claims);
     }
 
@@ -52,6 +53,7 @@ public class JWTUtil {
             map.forEach((k, v) -> resultMap.put(k, v.asString()));
             return resultMap;
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
 

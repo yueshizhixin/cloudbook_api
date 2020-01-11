@@ -29,7 +29,6 @@ public class DateUtil {
      */
     public static Date now() {
         return new Date();
-//        return Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
     public static String defaultTimeString() {
@@ -42,5 +41,14 @@ public class DateUtil {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static String toString(Date date) {
+        try{
+            return sdf.format(date);
+        }catch (Exception e){
+            return null;
+        }
+
     }
 }

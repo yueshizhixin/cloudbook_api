@@ -43,8 +43,16 @@ public class BookController {
 
     /**
      * 这块一下要确认权限
+     * chapterId chapterNo titleId统一起来 太轮乱了
      */
 
+    /**
+     * 没有返回lineId，默认1
+     * @param offset
+     * @param limit
+     * @param session
+     * @return
+     */
     @ApiOperation("我的书架")
 //    @Authority
     @RequestMapping(value = "/shelf", method = RequestMethod.GET)
@@ -67,9 +75,9 @@ public class BookController {
     }
 
     @ApiOperation("章节内容")
-    @RequestMapping(value = "/chapter/{id}/content", method = RequestMethod.GET)
-    public String getChapterContent(@ModelAttribute BookChapterContent bookChapterContent) {
-        return RESTUtil.HTTP200(bookService.getChapterContent(bookChapterContent.getId()));
+    @RequestMapping(value = "/{bookId}/chapter/{titleId}/content", method = RequestMethod.GET)
+    public String getChapterContent(@ModelAttribute BookChapter bookChapter) {
+        return RESTUtil.HTTP200(bookService.getChapterContent(bookChapter));
     }
 
     @ApiOperation("更新阅读记录")
@@ -80,10 +88,15 @@ public class BookController {
         return RESTUtil.HTTP200(bookService.updateBookShelfReadLine(bookShelf));
     }
 
+    /**
+     * 这个最终舍弃
+     * @param bookChapter
+     * @return
+     */
     @ApiOperation("最终舍弃/章节标题")
-    @RequestMapping(value = "/chapter/{id}/title", method = RequestMethod.GET)
+    @RequestMapping(value = "/{bookId}/chapter/{id}/title", method = RequestMethod.GET)
     public String getChapterTitle(@ModelAttribute BookChapter bookChapter) {
-        return RESTUtil.HTTP200(bookService.getChapterTitle(bookChapter.getId()));
+        return RESTUtil.HTTP200(bookService.getChapterTitle(bookChapter));
     }
 
 }

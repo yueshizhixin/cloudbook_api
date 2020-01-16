@@ -35,9 +35,8 @@ public interface BookService {
 
     /**
      * 获取章节内容
-     * @param id 章节表id
      */
-    public BookChapterContent getChapterContent(int id);
+    public BookChapterContent getChapterContent( BookChapter bookChapter);
 
     /**
      * 更新阅读记录
@@ -46,8 +45,7 @@ public interface BookService {
 
     /**
      * 获取章节标题
-     * 最终舍弃
      */
-    public BookChapter getChapterTitle(int chapterId);
+    public BookChapter getChapterTitle(BookChapter bookChapter);
 
 }

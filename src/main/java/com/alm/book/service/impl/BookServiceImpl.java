@@ -91,12 +91,27 @@ public class BookServiceImpl implements BookService {
 
     /**
      * 获取章节内容
-     *
-     * @param id 章节表id
      */
     @Override
-    public BookChapterContent getChapterContent(int id) {
-        return bookChapterContentMapper.selectByPrimaryKey(id);
+    public BookChapterContent getChapterContent( BookChapter bookChapter) {
+        BookChapterExample example=new BookChapterExample();
+        example.createCriteria()
+                .andBookIdEqualTo(bookChapter.getBookId())
+                .andTitleIdEqualTo(bookChapter.getTitleId());
+        List<BookChapter> list=bookChapterMapper.selectByExample(example);
+        if (list.isEmpty()) {
+            return null;
+        }
+        BookChapter bc = list.get(0);
+        System.out.println(bc);
+        BookChapterContentExample contentExample=new BookChapterContentExample();
+        contentExample.createCriteria()
+                .andChapterIdEqualTo(bc.getId());
+        List<BookChapterContent> contentList=bookChapterContentMapper.selectByExampleWithBLOBs(contentExample);
+        if (contentList.isEmpty()) {
+            return null;
+        }
+        return contentList.get(0);
     }
 
     /**
@@ -134,7 +149,8 @@ public class BookServiceImpl implements BookService {
         }
 
         bookShelf.setUpdateTime(DateUtil.now());
-        bookShelf.setChapterId(bookShelf.getChapterNo());
+        bookShelf.setChapterNo(bookShelf.getChapterNo());
+        bookShelf.setChapterId(0);
         bookShelfMapper.updateByExampleSelective(bookShelf, example);
         msg.setOk(1);
         msg.setMsg("操作成功");
@@ -147,7 +163,15 @@ public class BookServiceImpl implements BookService {
      * 最终舍弃
      */
     @Override
-    public BookChapter getChapterTitle(int chapterId) {
-        return bookChapterMapper.selectByPrimaryKey(chapterId);
+    public BookChapter getChapterTitle(BookChapter bookChapter) {
+        BookChapterExample example=new BookChapterExample();
+        example.createCriteria()
+                .andBookIdEqualTo(bookChapter.getBookId())
+                .andTitleIdEqualTo(bookChapter.getTitleId());
+        List<BookChapter> list=bookChapterMapper.selectByExample(example);
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 }

@@ -39,6 +39,21 @@ public class BookChapter {
     @ApiModelProperty("更新时间")
     private Date updateTime;
 
+    @Override
+    public String toString() {
+        return "BookChapter{" +
+                "id=" + id +
+                ", bookId=" + bookId +
+                ", bookName='" + bookName + '\'' +
+                ", lineId=" + lineId +
+                ", lineName='" + lineName + '\'' +
+                ", titleId=" + titleId +
+                ", title='" + title + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
+
     /**
      * 主键标识
      * @return id 主键标识

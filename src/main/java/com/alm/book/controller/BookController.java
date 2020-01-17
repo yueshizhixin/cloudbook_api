@@ -94,7 +94,7 @@ public class BookController {
      * @return
      */
     @ApiOperation("最终舍弃/章节标题")
-    @RequestMapping(value = "/{bookId}/chapter/{id}/title", method = RequestMethod.GET)
+    @RequestMapping(value = "/{bookId}/chapter/{titleId}/title", method = RequestMethod.GET)
     public String getChapterTitle(@ModelAttribute BookChapter bookChapter) {
         return RESTUtil.HTTP200(bookService.getChapterTitle(bookChapter));
     }

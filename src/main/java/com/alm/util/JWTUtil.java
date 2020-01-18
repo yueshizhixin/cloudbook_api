@@ -71,7 +71,7 @@ public class JWTUtil {
             System.out.println(jwt);
 
             String myjwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyIiwiaWQiOiIyIiwiZXhwIjoxNTc4NDc4ODg2fQ.O_kD6gy9uxLiWVAv25euuVeASpHL55tz_P4Z3V0PtO4";
-            System.out.println(JWTUtil.verifyUserToken(jwt));
+            System.out.println(JWTUtil.verifyUserToken(myjwt));
 
         }catch (Exception e){
             e.printStackTrace();

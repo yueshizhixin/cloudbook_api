@@ -1,30 +1,26 @@
-package com.alm.book.controller;
+package com.alm.user.controller;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:spring/springMVC.xml"})
-public class BookControllerTest {
+public class UserControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -36,17 +32,28 @@ public class BookControllerTest {
         this.mockMvc = webAppContextSetup(this.wac).build();
     }
 
+
     @Test
-    public void getChapterTitle() {
-
+    public void signIn() {
         try {
+            mockMvc.perform((post("/api/v1/user/tag=me")
+                    .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
+                    .param("phone", "13127043375")
+                    .param("pwd", "13127043375")
+            )).andDo(MockMvcResultHandlers.print());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-            mockMvc.perform((get("/api/v1/book/31/chapter/1/title")
+    @Test
+    public void getMyMessage() {
+        try {
+            mockMvc.perform((get("/api/v1/user/tag=me")
                     .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
             )).andDo(MockMvcResultHandlers.print());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -57,7 +57,7 @@ public class UserController {
     @ApiOperation("获取我的信息")
     @Authority
     @RequestMapping(value = "/tag=me", method = RequestMethod.GET)
-    public String myMessage(HttpSession session) {
+    public String getMyMessage(HttpSession session) {
         User user = (User) session.getAttribute(SessionEnum.user.AttrKey());
         return RESTUtil.HTTP200(user);
     }

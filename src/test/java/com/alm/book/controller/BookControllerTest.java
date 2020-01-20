@@ -38,9 +38,7 @@ public class BookControllerTest {
 
     @Test
     public void getChapterTitle() {
-
         try {
-
             mockMvc.perform((get("/api/v1/book/31/chapter/1/title")
                     .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
             )).andDo(MockMvcResultHandlers.print());
@@ -48,5 +46,16 @@ public class BookControllerTest {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    public void getChapterContent() {
+        try {
+            mockMvc.perform((get("/api/v1/book/31/chapter/1/content")
+                    .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
+            )).andDo(MockMvcResultHandlers.print());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

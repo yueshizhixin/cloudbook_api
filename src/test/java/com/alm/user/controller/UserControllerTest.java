@@ -32,11 +32,10 @@ public class UserControllerTest {
         this.mockMvc = webAppContextSetup(this.wac).build();
     }
 
-
     @Test
     public void signIn() {
         try {
-            mockMvc.perform((post("/api/v1/user/tag=me")
+            mockMvc.perform((post("/api/v1/user/tag=sign=in")
                     .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
                     .param("phone", "13127043375")
                     .param("pwd", "13127043375")

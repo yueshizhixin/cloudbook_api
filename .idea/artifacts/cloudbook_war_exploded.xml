@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="cloud.book:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/cloud_book_war_exploded</output-path>
+  <artifact type="exploded-war" name="cloudbook:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/cloudbook_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="cloud.book" />
+          <element id="module-output" name="cloudbook" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.auth0:java-jwt:3.8.3" />
@@ -67,7 +67,7 @@
           <element id="library" level="project" name="Maven: com.github.virtuald:curvesapi:1.04" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="cloud.book/web/Web" />
+      <element id="javaee-facet-resources" facet="cloudbook/web/Web" />
     </root>
   </artifact>
 </component>

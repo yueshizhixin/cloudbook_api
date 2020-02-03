@@ -1,6 +1,6 @@
 package com.alm.system.authority;
 
-import com.alm.enume.SessionEnum;
+import com.alm.enume.AuthEnum;
 import com.alm.user.po.User;
 import com.alm.util.JWTUtil;
 import org.springframework.web.method.HandlerMethod;
@@ -37,30 +37,19 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
                         authority = clazz.getAnnotation(Authority.class);
                     }
                     if (authority != null) {
+                        User user=null;
                         if (AuthorityEnum.UNAUTHORIZED == authority.value()) {
-                            System.out.println("权限验证a");
-//                            Enumeration<String> headers=req.getHeaderNames();
-//                            while (headers.hasMoreElements()) {
-//                                String name=headers.nextElement();
-//                                System.out.println(name);
-//                                String value=req.getHeader(name);
-//                                System.out.println(value);
-//                            }
                             String token=req.getHeader("authorization");
-                            Map<String,String> map=JWTUtil.verifyUserToken(token);
-                            map.forEach((k,v)->{
-                                System.out.println(k);
-                                System.out.println(v);
-                            });
-//                            User user = (User) req.getSession().getAttribute(SessionEnum.user.AttrKey());
-//                            if (user == null || user.getId() == null || user.getIsSignable()==0) {
-//                                req.getRequestDispatcher("/api/401").forward(req, res);
-//                                return false;
-//                            }
+                            user=JWTUtil.verifyUserToken(token);
+                            if (user == null || user.getId() == null || user.getIsSignable()==0) {
+                                req.getRequestDispatcher("/api/401").forward(req, res);
+                                return false;
+                            }
                         } else if (AuthorityEnum.FORBIDDEN == authority.value()) {
                             req.getRequestDispatcher("/api/403").forward(req, res);
                             return false;
                         }
+                        req.setAttribute(AuthEnum.user.key(),user);
                     }
                 }
             } catch (Exception e) {

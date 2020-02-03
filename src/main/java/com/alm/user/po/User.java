@@ -47,6 +47,22 @@ public class User {
     @ApiModelProperty("是否允许登录")
     private Integer isSignable;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", headImg='" + headImg + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", sex=" + sex +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", isSignable=" + isSignable +
+                '}';
+    }
+
     /**
      * 用户标识
      * @return id 用户标识

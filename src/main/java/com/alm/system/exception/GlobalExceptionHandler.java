@@ -42,10 +42,16 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public String handlerException(Exception e) {
+
+
         LOGGER.error("\n===异常开始");
+
+//        e.printStackTrace();
+
         LOGGER.error(e);
         Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
         LOGGER.error("\n===异常结束");
+
         return RESTUtil.HTTP500();
     }
 }

@@ -7,15 +7,15 @@ package com.alm.enume;
  * <p>desc: </p>
  */
 
-public class SessionEnum {
+public class AuthEnum {
     public enum user {
-        attrKey(1, "user"),
+        key(1, "user"),
         ;
         private int id;
         private String value;
 
-        public static String AttrKey() {
-            return attrKey.getValue();
+        public static String key() {
+            return key.getValue();
         }
 
         public String getValue() {

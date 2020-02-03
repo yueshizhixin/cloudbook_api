@@ -22,9 +22,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 登录
-     *
-     * @param user
-     * @return
      */
     @Override
     public Message signIn(User user) {
@@ -60,9 +57,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据账号获取会员
-     *
-     * @param account
-     * @return
      */
     @Override
     public User selectUserByAccount(String account) {
@@ -74,5 +68,10 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         return list.get(0);
+    }
+
+    @Override
+    public User selectUserById(int id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 }

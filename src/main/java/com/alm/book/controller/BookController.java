@@ -2,19 +2,19 @@ package com.alm.book.controller;
 
 import com.alm.book.po.Book;
 import com.alm.book.po.BookChapter;
-import com.alm.book.po.BookChapterContent;
 import com.alm.book.po.BookShelf;
 import com.alm.book.service.BookService;
-import com.alm.enume.SessionEnum;
+import com.alm.enume.AuthEnum;
 import com.alm.system.authority.Authority;
 import com.alm.user.po.User;
+import com.alm.util.JWTUtil;
 import com.alm.util.RESTUtil;
-import com.github.pagehelper.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -48,18 +48,13 @@ public class BookController {
 
     /**
      * 没有返回lineId，默认1
-     * @param offset
-     * @param limit
-     * @param session
-     * @return
      */
     @ApiOperation("我的书架")
-//    @Authority
+    @Authority
     @RequestMapping(value = "/shelf", method = RequestMethod.GET)
-    public String getMyBookShelf(@RequestParam int offset,@RequestParam int limit, HttpSession session) {
-//        User user= (User) session.getAttribute(SessionEnum.user.AttrKey());
-//        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,user.getId()));
-        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,1));
+    public String getMyBookShelf(@RequestParam int offset,@RequestParam int limit,  HttpServletRequest req) {
+        User user = (User) req.getAttribute(AuthEnum.user.key());
+        return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,user.getId()));
     }
 
     @ApiOperation("书籍详情")

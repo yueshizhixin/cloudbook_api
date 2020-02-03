@@ -17,18 +17,13 @@ public interface UserService {
 
     /**
      * 登录
-     *
-     * @param user
-     * @return
      */
     public Message signIn(User user);
 
     /**
      * 根据账号获取会员
-     *
-     * @param account
-     * @return
      */
     public User selectUserByAccount(String account);
 
+    public User selectUserById(int id);
 }

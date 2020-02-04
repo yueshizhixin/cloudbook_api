@@ -72,15 +72,15 @@ public class JWTUtil {
     public static void main(String[] args) {
         try{
 
-            User user = new User();
-            user.setId(2);
-            user.setIsSignable(1);
-            String jwt=JWTUtil.createUserToken(user);
-            System.out.println(jwt);
-            System.out.println(JWTUtil.verifyUserToken(jwt));
+//            User user = new User();
+//            user.setId(2);
+//            user.setIsSignable(1);
+//            String jwt=JWTUtil.createUserToken(user);
+//            System.out.println(jwt);
+//            System.out.println(JWTUtil.verifyUserToken(jwt));
 
 
-            String myjwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyIiwiaXNTaWduYWJsZSI6IjEiLCJpZCI6IjIiLCJleHAiOjE1ODA3MTcwMzZ9.leN53uP-Rkm4WkY3OQea9yaLAnhGm2lsQxfDPQ9ptg4";
+            String myjwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1c2VyIiwiaXNTaWduYWJsZSI6IjEiLCJpZCI6IjIiLCJleHAiOjE1ODA3MjkyODh9.RzSjXXCT5Fqxa9H1D7mAKUhQ8yU48tDE92FJSSyWRUM";
             System.out.println(JWTUtil.verifyUserToken(myjwt));
 
         }catch (Exception e){

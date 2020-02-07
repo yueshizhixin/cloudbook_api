@@ -44,6 +44,12 @@ public class BookController {
         return RESTUtil.HTTP200(bookService.getShopBookList(offset,limit));
     }
 
+    @ApiOperation("书籍详情")
+    @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
+    public String getBookDetail(@ModelAttribute Book book){
+        return RESTUtil.HTTP200(bookService.getBookDetail(book.getId()));
+    }
+
     /**
      * 这块一下要确认权限
      * chapterId chapterNo titleId统一起来 太轮乱了
@@ -60,11 +66,7 @@ public class BookController {
         return RESTUtil.HTTP200(bookService.getMyBookShelf(offset,limit,user.getId()));
     }
 
-    @ApiOperation("书籍详情")
-    @RequestMapping(value = "/{id}/detail", method = RequestMethod.GET)
-    public String getBookDetail(@ModelAttribute Book book){
-        return RESTUtil.HTTP200(bookService.getBookDetail(book.getId()));
-    }
+
 
     @ApiOperation("书籍目录")
     @RequestMapping(value = "/{id}/chapter", method = RequestMethod.GET)

@@ -48,4 +48,17 @@ public class PropConfUtil {
         }
     }
 
+    /**
+     * 获取jwt过期小时数
+     */
+    public static int allowClientVersion() {
+        try {
+            initializeCheck();
+            properties.load(inputStream);
+            return Integer.parseInt(properties.getProperty("allowClientVersion", null));
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
 }

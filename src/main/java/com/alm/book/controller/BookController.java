@@ -6,6 +6,8 @@ import com.alm.book.po.BookShelf;
 import com.alm.book.service.BookService;
 import com.alm.enume.AuthEnum;
 import com.alm.system.authority.Authority;
+import com.alm.system.version.CommonVersion;
+import com.alm.system.version.CommonVersionCheckType;
 import com.alm.user.po.User;
 import com.alm.util.JWTUtil;
 import com.alm.util.RESTUtil;
@@ -24,6 +26,7 @@ import javax.servlet.http.HttpSession;
  * <p>desc: </p>
  */
 @Api(value = "书籍")
+@CommonVersion(method = {CommonVersionCheckType.CLIENT_VERSION})
 @RestController
 @RequestMapping("/api/v1/book")
 public class BookController {

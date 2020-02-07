@@ -53,8 +53,12 @@
         <!-- 权限认证拦截器 -->
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <!--<mvc:mapping path="/**/*.c"/>-->
             <bean class="com.alm.system.authority.AuthorityAnnotationInterceptor"/>
+        </mvc:interceptor>
+        <!-- 版本拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.alm.system.version.CommonVersionAnnotationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

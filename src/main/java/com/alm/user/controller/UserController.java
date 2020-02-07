@@ -2,6 +2,8 @@ package com.alm.user.controller;
 
 import com.alm.system.authority.Authority;
 import com.alm.enume.AuthEnum;
+import com.alm.system.version.CommonVersion;
+import com.alm.system.version.CommonVersionCheckType;
 import com.alm.system.vo.Message;
 import com.alm.user.po.User;
 import com.alm.user.service.UserService;
@@ -14,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by IntelliJ IDEA.
@@ -67,6 +68,7 @@ public class UserController {
 
     @ApiOperation("更新我的信息")
     @Authority
+    @CommonVersion(method = {CommonVersionCheckType.CLIENT_VERSION})
     @RequestMapping(value = "/me", method = {RequestMethod.PUT})
     public String updateMyMessage(@ModelAttribute User user,HttpServletRequest req) {
         int userId = ((User) req.getAttribute(AuthEnum.user.key())).getId();
@@ -76,6 +78,7 @@ public class UserController {
 
     @ApiOperation("修改密码")
     @Authority
+    @CommonVersion(method = {CommonVersionCheckType.CLIENT_VERSION})
     @RequestMapping(value = "/me/pwd", method = {RequestMethod.PUT})
     public String updatePassword(@RequestParam String oldPwd,@RequestParam String newPwd,HttpServletRequest req) {
         int userId = ((User) req.getAttribute(AuthEnum.user.key())).getId();

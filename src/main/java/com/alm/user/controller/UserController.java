@@ -60,10 +60,25 @@ public class UserController {
     @Authority
     @RequestMapping(value = "/tag=me", method = RequestMethod.GET)
     public String getMyMessage(HttpServletRequest req) {
-        User user = (User) req.getAttribute(AuthEnum.user.key());
-        user = userService.selectUserById(user.getId());
-        return RESTUtil.HTTP200(user);
+        User me = (User) req.getAttribute(AuthEnum.user.key());
+        me = userService.selectUserById(me.getId());
+        return RESTUtil.HTTP200(me);
     }
 
+    @ApiOperation("更新我的信息")
+    @Authority
+    @RequestMapping(value = "/me", method = {RequestMethod.PUT})
+    public String updateMyMessage(@ModelAttribute User user,HttpServletRequest req) {
+        int userId = ((User) req.getAttribute(AuthEnum.user.key())).getId();
+        user.setId(userId);
+        return JSONUtil.format(userService.updateUserById(user));
+    }
 
+    @ApiOperation("修改密码")
+    @Authority
+    @RequestMapping(value = "/me/pwd", method = {RequestMethod.PUT})
+    public String updatePassword(@RequestParam String oldPwd,@RequestParam String newPwd,HttpServletRequest req) {
+        int userId = ((User) req.getAttribute(AuthEnum.user.key())).getId();
+        return JSONUtil.format(userService.updatePassword(userId,oldPwd,newPwd));
+    }
 }

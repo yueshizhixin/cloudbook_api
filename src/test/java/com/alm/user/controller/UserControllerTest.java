@@ -1,5 +1,7 @@
 package com.alm.user.controller;
 
+import com.alm.enume.AuthEnum;
+import com.alm.user.po.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -50,6 +52,20 @@ public class UserControllerTest {
         try {
             mockMvc.perform((get("/api/v1/user/tag=me")
                     .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
+            )).andDo(MockMvcResultHandlers.print());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void updateMyMessage() {
+        try {
+            User user = new User(2);
+            mockMvc.perform((put("/api/v1/user/me")
+                    .accept(MediaType.parseMediaType("application/json;charset=UTF-8"))
+                    .requestAttr(AuthEnum.user.key(),user)
+                    .param("nickName", "123123")
             )).andDo(MockMvcResultHandlers.print());
         } catch (Exception e) {
             e.printStackTrace();

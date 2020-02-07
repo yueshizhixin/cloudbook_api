@@ -25,5 +25,18 @@ public interface UserService {
      */
     public User selectUserByAccount(String account);
 
+    /**
+     * 根据主键获取会员
+     */
     public User selectUserById(int id);
+
+    /**
+     * 根据主键更新会员信息
+     */
+    public Message updateUserById(User user);
+
+    /**
+     * 修改密码
+     */
+    public Message updatePassword(int id,String oldPwd,String newPwd);
 }

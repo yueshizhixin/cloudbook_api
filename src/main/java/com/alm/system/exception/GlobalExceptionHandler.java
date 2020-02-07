@@ -46,11 +46,11 @@ public class GlobalExceptionHandler {
 
         LOGGER.error("\n===异常开始");
 
-//        e.printStackTrace();
+        e.printStackTrace();
 
-        LOGGER.error(e);
-        Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
-        LOGGER.error("\n===异常结束");
+//        LOGGER.error(e);
+//        Arrays.stream(e.getStackTrace()).forEach(LOGGER::error);
+//        LOGGER.error("\n===异常结束");
 
         return RESTUtil.HTTP500();
     }

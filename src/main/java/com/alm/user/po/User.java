@@ -47,6 +47,12 @@ public class User {
     @ApiModelProperty("是否允许登录")
     private Integer isSignable;
 
+    public User() {}
+
+    public User(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +

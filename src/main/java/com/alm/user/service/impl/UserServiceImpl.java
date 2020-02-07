@@ -70,8 +70,63 @@ public class UserServiceImpl implements UserService {
         return list.get(0);
     }
 
+    /**
+     * 根据主键获取会员
+     */
     @Override
     public User selectUserById(int id) {
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 根据主键更新会员信息
+     */
+    @Override
+    public Message updateUserById(User user) {
+
+        Message msg = new Message();
+        if (user.getId() == null || user.getId() <= 0) {
+            msg.setMsg("主键错误");
+            return msg;
+        }
+        UserExample example = new UserExample();
+        example.createCriteria().andIdEqualTo(user.getId());
+        long count= userMapper.countByExample(example);
+        if (count == 0) {
+            msg.setMsg("参数错误");
+            return msg;
+        }
+        user.setCreateTime(null);
+        user.setUpdateTime(null);
+        user.setPhone(null);
+        user.setEmail(null);
+
+        userMapper.updateByPrimaryKeySelective(user);
+        msg = new Message(1);
+        return msg;
+    }
+
+    /**
+     * 修改密码
+     */
+    @Override
+    public Message updatePassword(int id, String oldPwd, String newPwd) {
+        Message msg = new Message();
+        if (id <= 0) {
+            msg.setMsg("主键错误");
+            return msg;
+        }
+        UserExample example = new UserExample();
+        example.createCriteria().andIdEqualTo(id).andPwdEqualTo(oldPwd);
+        long count= userMapper.countByExample(example);
+        if (count == 0) {
+            msg.setMsg("原密码错误");
+            return msg;
+        }
+        User user = new User(id);
+        user.setPwd(newPwd);
+        userMapper.updateByPrimaryKeySelective(user);
+        msg = new Message(1);
+        return msg;
     }
 }
